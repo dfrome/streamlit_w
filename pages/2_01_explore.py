@@ -8,12 +8,23 @@ st.set_page_config(page_title="Plotting Demo", page_icon="📈")
 st.markdown("# CO2 Demo")
 st.sidebar.header("CO2 Demo")
 st.write(
-    """Nous explorons les données. Elles sont très complètes.
+    """Nous explorons les données. Elles sont très complètes.  
     Il y a toutefois beaucoup d'erreurs manifestes de saisie."""
 )
 
+image_path = "images/vehiclesByCty_01.png"
+image = Image.open(image_path)
+st.image(image, caption="Distribution des véhicules par pays.")
+st.write("""
+         """)
 
-image_path = "images/CorrectionsEmpattement.jpg"  # Adjust path relative to your file
+image_path = "images/vehiclesByFtByCty_01.png"
+image = Image.open(image_path)
+st.image(image, caption="Energie des véhicules par pays.")
+st.write("""
+         """)
+
+image_path = "images/CorrectionsEmpattement.jpg"
 image = Image.open(image_path)
 st.image(image, caption="Outliers d'empattements comparés à la masse.")
 
