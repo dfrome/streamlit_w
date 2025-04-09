@@ -3,10 +3,14 @@ import time
 import numpy as np
 from PIL import Image
 
-st.set_page_config(page_title="Plotting Demo", page_icon="📈")
+#st.set_page_config(page_title="Plotting Demo", page_icon="📈")
+st.set_page_config(
+    page_title="Projet Datascientest - émission de CO2 des véhicules.",
+    page_icon="📈",
+)
 
 st.markdown("# CO2 Exploration des données")
-st.sidebar.header("Nous explorons le données")
+st.sidebar.header("Nous explorons les données")
 st.write(
     """Nous explorons tout d'abord les données."""
 )
@@ -32,22 +36,22 @@ st.write("""Les donnés sont très complètes.
     Supprimons les données inutilisables, traitons les aberrations et interprêtons les codes.     """)
 
 
-"""
-progress_bar = st.sidebar.progress(0)
-status_text = st.sidebar.empty()
-last_rows = np.random.randn(1, 1)
-chart = st.line_chart(last_rows)
 
-for i in range(1, 11):
-    new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
-    status_text.text("%i%% Complete" % i)
-    chart.add_rows(new_rows)
-    progress_bar.progress(i)
-    last_rows = new_rows
-    time.sleep(0.05)
+#progress_bar = st.sidebar.progress(0)
+#status_text = st.sidebar.empty()
+#last_rows = np.random.randn(1, 1)
+#chart = st.line_chart(last_rows)
 
-progress_bar.empty()
-"""
+#for i in range(1, 11):
+#    new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
+#    status_text.text("%i%% Complete" % i)
+#    chart.add_rows(new_rows)
+#    progress_bar.progress(i)
+#    last_rows = new_rows
+#    time.sleep(0.05)
+
+#progress_bar.empty()
+
 
 # Streamlit widgets automatically run the script from top to bottom. Since
 # this button is not connected to any other logic, it just causes a plain
