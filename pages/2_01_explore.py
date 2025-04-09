@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import numpy as np
+from PIL import Image
 
 st.set_page_config(page_title="Plotting Demo", page_icon="📈")
 
@@ -31,3 +32,7 @@ progress_bar.empty()
 # this button is not connected to any other logic, it just causes a plain
 # rerun.
 st.button("Re-run")
+
+image_path = "../images/CorrectionsEmpattement.jpg"  # Adjust path relative to your file
+image = Image.open(image_path)
+st.image(image, caption="Outliers d'empattements comparés à la masse.")
