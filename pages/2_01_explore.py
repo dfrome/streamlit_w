@@ -13,6 +13,14 @@ Streamlit. We're generating a bunch of random numbers in a loop for around
 5 seconds. Enjoy!"""
 )
 
+import os
+print(os.getcwd())
+
+
+image_path = "images/CorrectionsEmpattement.jpg"  # Adjust path relative to your file
+image = Image.open(image_path)
+st.image(image, caption="Outliers d'empattements comparés à la masse.")
+
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
 last_rows = np.random.randn(1, 1)
@@ -33,6 +41,3 @@ progress_bar.empty()
 # rerun.
 st.button("Re-run")
 
-image_path = "../images/CorrectionsEmpattement.jpg"  # Adjust path relative to your file
-image = Image.open(image_path)
-st.image(image, caption="Outliers d'empattements comparés à la masse.")
