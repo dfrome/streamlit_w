@@ -34,15 +34,22 @@ for img in images:
     except FileNotFoundError:
         st.error(f"Image non trouvée : {img['path']}")
 
+st.write("""Les donnés sont très complètes.  
+    Il y a toutefois beaucoup d'erreurs manifestes de saisie.   
+    Supprimons les données inutilisables, traitons les aberrations et interprêtons les codes.     """)
+
+st.write("""
+Focus sur At1 et At2: en ayant fait un pairplot on s’est aperçu de la relation très linéaire entre les deux variables.  
+Le graphique ci-dessous l’illustre bien mais nous avons aussi voulu le confirmer statistiquement avec des tests de corrélation dont les résultats sont également précisés ci-après
+""")
+image_path = "images/at1at2.jpg"
+image = Image.open(image_path)
+st.image(image, caption="relations At1/At2.")
 
 
 image_path = "images/CorrectionsEmpattement.jpg"
 image = Image.open(image_path)
 st.image(image, caption="Outliers d'empattements comparés à la masse.")
-
-st.write("""Les donnés sont très complètes.  
-    Il y a toutefois beaucoup d'erreurs manifestes de saisie.   
-    Supprimons les données inutilisables, traitons les aberrations et interprêtons les codes.     """)
 
 st.write("""
 On ajoute des features en explosant les codes d'innovative technology:
@@ -51,6 +58,12 @@ image_path = "images/innov_tech.png"
 image = Image.open(image_path)
 st.image(image, caption="distribution selon types d'innovations embarquées.")
 
+st.write("""
+Au final après tous ces traitements, on harmonise l'échelle des valeurs numériques""")
+
+image_path = "images/scaled.png"
+image = Image.open(image_path)
+st.image(image, caption="disctributionDistribution des variables explicatives numériques après scaling.")
 
 
 #progress_bar = st.sidebar.progress(0)
