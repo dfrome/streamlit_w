@@ -8,13 +8,9 @@ st.set_page_config(page_title="Plotting Demo", page_icon="📈")
 st.markdown("# CO2 Demo")
 st.sidebar.header("CO2 Demo")
 st.write(
-    """This demo illustrates a combination of plotting and animation with
-Streamlit. We're generating a bunch of random numbers in a loop for around
-5 seconds. Enjoy!"""
+    """Nous explorons les données. Elles sont très complètes.
+    Il y a toutefois beaucoup d'erreurs manifestes de saisie."""
 )
-
-import os
-print(os.getcwd())
 
 
 image_path = "images/CorrectionsEmpattement.jpg"  # Adjust path relative to your file
@@ -26,7 +22,7 @@ status_text = st.sidebar.empty()
 last_rows = np.random.randn(1, 1)
 chart = st.line_chart(last_rows)
 
-for i in range(1, 101):
+for i in range(1, 11):
     new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
     status_text.text("%i%% Complete" % i)
     chart.add_rows(new_rows)
