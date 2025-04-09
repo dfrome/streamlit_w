@@ -16,10 +16,13 @@ st.write(
 )
 
 images = [
-    {"path": "images/vehiclesByFtByCty_01.png", "caption": "Type de carburant des véhicules par pays."},
+    {"path": "images/vehiclesByFtByCty_01.png", "caption": "Type de carburant des véhicules par pays, base des ventes."},
     {"path": "images/CO2ByFt.png", "caption": "Comparaison des émissions de CO2 par type de carburant."},
     {"path": "images/CO2_byEp.png", "caption": "Relation entre puissance et émissions de CO2."},
     {"path": "images/CO2ByFt.png", "caption": "Relation entre puissance et émissions de CO2."},
+    {"path": "images/relations_01.png", "caption": "Focus sur des relations entre variables explicatives et cible."},
+    {"path": "images/matrice_initiale.jpg", "caption": "Matrice de corrélation entre les valeurs numériques, base des modèles."},
+    
 ]
 
 # Affichage des images
@@ -40,6 +43,13 @@ st.image(image, caption="Outliers d'empattements comparés à la masse.")
 st.write("""Les donnés sont très complètes.  
     Il y a toutefois beaucoup d'erreurs manifestes de saisie.   
     Supprimons les données inutilisables, traitons les aberrations et interprêtons les codes.     """)
+
+st.write("""
+On ajoute des features en explosant les codes d'innovative technology:
+         """)
+image_path = "images/innov_tech.png"
+image = Image.open(image_path)
+st.image(image, caption="distribution selon types d'innovations embarquées.")
 
 
 
