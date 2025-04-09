@@ -15,17 +15,22 @@ st.write(
     """Nous explorons tout d'abord les données."""
 )
 
-image_path = "images/vehiclesByFtByCty_01.png"
-image = Image.open(image_path)
-st.image(image, caption="Type de carburant des véhicules par pays.")
-st.write("""
-         """)
+images = [
+    {"path": "images/vehiclesByFtByCty_01.png", "caption": "Type de carburant des véhicules par pays."},
+    {"path": "images/CO2ByFt.png", "caption": "Comparaison des émissions de CO2 par type de carburant."},
+    {"path": "images/CO2ByEp.png", "caption": "Relation entre puissance et émissions de CO2."}
+]
 
-image_path = "images/CO2ByFt.png"
-image = Image.open(image_path)
-st.image(image, caption="Comparaison des émissiones de CO2 par type de carburant.")
-st.write("""
-         """)
+# Affichage des images
+for img in images:
+    try:
+        image = Image.open(img["path"])
+        st.image(image, caption=img["caption"])
+        st.write("")  # Pour espacer les images
+    except FileNotFoundError:
+        st.error(f"Image non trouvée : {img['path']}")
+
+
 
 image_path = "images/CorrectionsEmpattement.jpg"
 image = Image.open(image_path)
