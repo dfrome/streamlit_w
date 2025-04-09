@@ -1,28 +1,28 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="CO2",
+    page_title="Projet Datascientest - émission de CO2 des véhicules",
     page_icon="👋",
 )
 
-st.write("# Welcome to Streamlit! 👋")
+st.write("# Emission de CO2 des véhicules  👋")
 
-st.sidebar.success("Select a demo above.")
+st.sidebar.success("Sélectionnez un thème.")
 
 st.markdown(
     """
-    Streamlit is an open-source app framework built specifically for
-    Machine Learning and Data Science projects.
-    **👈 Select a demo from the sidebar** to see some examples
-    of what Streamlit can do!
-    ### Want to learn more?
-    - Check out [streamlit.io](https://streamlit.io)
-    - Jump into our [documentation](https://docs.streamlit.io)
-    - Ask a question in our [community
-        forums](https://discuss.streamlit.io)
-    ### See more complex demos
-    - Use a neural net to [analyze the Udacity Self-driving Car Image
-        Dataset](https://github.com/streamlit/demo-self-driving)
-    - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
+    Cette page présente les relations entre caractéristiques de véhicules et leur émission de CO2
+    Projet d'apprenants de l'organisme Datascientest
+    **👈 Faites votre choix depuis le volet d'exploration** pour développer un thème.
+      
+    ### Fait par
+    - Polina, Vincent, Denis
+    - Formation continue
+    - Métier: Data Scientist
+    - Cohorte Septembre 2024
+        
+    ### Source des données
+    - Source de données : année 2023 de [eea.europa.eu](http://co2cars.apps.eea.europa.eu/)
+    - Organisme de formation: (http://www.datascientest.com)
 """
 )
