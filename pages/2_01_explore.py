@@ -18,7 +18,7 @@ st.write(
 images = [
     {"path": "images/vehiclesByFtByCty_01.png", "caption": "Type de carburant des véhicules par pays."},
     {"path": "images/CO2ByFt.png", "caption": "Comparaison des émissions de CO2 par type de carburant."},
-    {"path": "images/CO2ByEp.png", "caption": "Relation entre puissance et émissions de CO2."},
+    {"path": "images/CO2_byEp.png", "caption": "Relation entre puissance et émissions de CO2."},
     {"path": "images/CO2ByFt.png", "caption": "Relation entre puissance et émissions de CO2."},
 ]
 
