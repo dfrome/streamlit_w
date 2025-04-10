@@ -160,11 +160,8 @@ handle_model_selection(
     y_test=y_test
 )
 
-
-# Streamlit widgets automatically run the script from top to bottom. Since
-# this button is not connected to any other logic, it just causes a plain
-# rerun.
-if st.button("Recharger nos paramètres préférés"):
-    st.session_state.clear()
-    st.session_state["reset"] = True
+# marche pas :()
+#if st.button("Recharger nos paramètres préférés"):
+#    st.session_state.clear()
+#    st.session_state["reset"] = True
 
