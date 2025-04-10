@@ -40,6 +40,11 @@ def load_our_data():
     y_test = y_test[y_column]
     return X_train_scaled, X_test_scaled, y_train, y_test
 
+# Fonction pour entraîner un modèle
+def train_model(model, X_train, y_train):
+    model.fit(X_train, y_train)
+    return model
+
 # Fonction pour afficher les résultats
 def display_results(model_name, model, X_test, y_test, hyperparameters):
     # Effectuer les prédictions
