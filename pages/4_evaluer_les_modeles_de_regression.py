@@ -87,7 +87,7 @@ def display_results(model_name, model, X_test, y_test, hyperparameters):
     #    st.write("**Paramètres du modèle :**")
     #    st.write(f" - Coefficient (pente) : {model.coef_[0]:.4f}")
     #    st.write(f" - Intercept (ordonnée à l'origine) : {model.intercept_:.4f}")
-    display_model_parameters(model)
+    display_model_parameters(model, X_test)
 
 
 # Fonction appelée à chaque sélection de modèle

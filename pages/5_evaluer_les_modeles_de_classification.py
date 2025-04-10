@@ -8,9 +8,10 @@ from sklearn.metrics import accuracy_score, classification_report
 # charge les chemins vers les fichiers de données : base_processed, base_raw, base_models...
 from init_notebook import base_processed, base_raw, base_models
 
-# charge des fonctions faites pour streamlit
-from utils_streamlit_co2 import display_model_parameters
+# charge des fonctions communes pour streamlit
+from utils_streamlit_co2 import display_model_parameters, display_model_parameters_classification
 
+# charge des fonctions communes pour le projet
 from common_co2 import load_our_data_cat, display_norm_matrix
 
 pd.set_option('future.no_silent_downcasting', True)
@@ -30,6 +31,7 @@ st.write("Nous voulons classifier les véhicules en fonction de leurs caractéri
 def train_model_classification(model, X_train, y_train):
     model.fit(X_train, y_train)
     return model
+
 
 # Fonction pour afficher les résultats
 def display_results_classification(model_name, model, X_test, y_test, hyperparameters):
@@ -56,7 +58,9 @@ def display_results_classification(model_name, model, X_test, y_test, hyperparam
     st.markdown("\n---\n")
 
     # Afficher les paramètres spécifiques au modèle
-    display_model_parameters_classification(model)
+    display_model_parameters_classification(model, X_test)
+
+
 
 # Fonction appelée à chaque sélection de modèle
 def handle_model_selection_classification(model_name, model_class, X_train_scaled, X_test_scaled, y_train, y_test):

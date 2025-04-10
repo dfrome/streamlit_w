@@ -68,7 +68,8 @@ def display_model_parameters(model, X_test=None):
     #else:
     #    st.write("- Aucun paramètre spécifique détecté pour ce modèle.")
 
-def display_model_parameters_classification(model):
+
+def display_model_parameters_classification(model, X_test=None):
     """
     Affiche les paramètres spécifiques du modèle de classification fourni.
     Compatible avec les modèles que nous avons retenu:
