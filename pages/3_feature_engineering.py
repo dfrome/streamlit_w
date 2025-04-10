@@ -3,40 +3,20 @@ import time
 import numpy as np
 from PIL import Image
 
-#st.set_page_config(page_title="Plotting Demo", page_icon="📈")
+#st.set_page_config(page_title="Plotting Demo", page_icon=":wrench:")
 st.set_page_config(
     page_title="Projet Datascientest - émission de CO2 des véhicules.",
-    page_icon="📈",
+    page_icon=":wrench:",
 )
 
-st.markdown("# CO2 Exploration des données")
-st.sidebar.header("Nous explorons les données")
-st.write(
-    """Nous explorons tout d'abord les données."""
-)
+st.markdown("# CO2 Feature engineering")
+st.sidebar.header("Nous corrigeons les données")
 
-images = [
-    {"path": "images/vehiclesByFtByCty_01.png", "caption": "Type de carburant des véhicules par pays, base des ventes."},
-    {"path": "images/CO2ByFt.png", "caption": "Comparaison des émissions de CO2 par type de carburant."},
-    {"path": "images/CO2_byEp.png", "caption": "Relation entre puissance et émissions de CO2."},
-    {"path": "images/CO2ByFt.png", "caption": "Relation entre puissance et émissions de CO2."},
-    {"path": "images/relations_01.png", "caption": "Focus sur des relations entre variables explicatives et cible."},
-    {"path": "images/matrice_initiale.jpg", "caption": "Matrice de corrélation entre les valeurs numériques, base des modèles."},
-    
-]
-
-# Affichage des images
-for img in images:
-    try:
-        image = Image.open(img["path"])
-        st.image(image, caption=img["caption"])
-        st.write("")  # Pour espacer les images
-    except FileNotFoundError:
-        st.error(f"Image non trouvée : {img['path']}")
-
-st.write("""Les donnés sont très complètes.  
-    Il y a toutefois beaucoup d'erreurs manifestes de saisie.   
-    Supprimons les données inutilisables, traitons les aberrations et interprêtons les codes.     """)
+st.write("""Dans les données originales, il y a beaucoup d'erreurs manifestes de saisie.   
+    Nous supprimons les données inutilisables,  
+    Nous traitons les colonnes à ayant des valeurs manquantes.  
+    Nous corrigeons ou supprimpons les aberrations.  
+    Et nousinterprêtons les codes.     """)
 
 st.write("""
 Focus sur At1 et At2: en ayant fait un pairplot on s’est aperçu de la relation très linéaire entre les deux variables.  
@@ -85,5 +65,5 @@ st.image(image, caption="disctributionDistribution des variables explicatives nu
 # Streamlit widgets automatically run the script from top to bottom. Since
 # this button is not connected to any other logic, it just causes a plain
 # rerun.
-st.button("Re-run")
+#st.button("Re-run")
 
