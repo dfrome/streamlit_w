@@ -12,10 +12,11 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 pd.set_option('future.no_silent_downcasting', True)
+from init_notebook import base_processed, base_raw, base_models
               
 def load_our_data():
     # charge les chemins vers les fichiers de données : base_processed, base_raw, base_models...
-    %run init_notebook.py
+    
 
     X_train_scaled = pd.read_csv(base_processed + 'X_train_scaled.csv')
     X_test_scaled = pd.read_csv(base_processed + 'X_test_scaled.csv')
