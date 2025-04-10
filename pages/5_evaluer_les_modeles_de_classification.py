@@ -11,6 +11,8 @@ from init_notebook import base_processed, base_raw, base_models
 # charge des fonctions faites pour streamlit
 from utils_streamlit_co2 import display_model_parameters
 
+from common_co2 import load_our_data_cat, display_norm_matrix
+
 pd.set_option('future.no_silent_downcasting', True)
 
 st.set_page_config(
@@ -100,7 +102,7 @@ def handle_model_selection_classification(model_name, model_class, X_train_scale
             "max_features": max_features,
             "bootstrap": bootstrap
         }
-        
+
     elif model_name == "Support Vector Machine (SVM)":
         C = st.slider("Paramètre C", 0.1, 10.0, 1.0)
         kernel = st.selectbox("Type de noyau (kernel)", ["linear", "rbf", "poly"])
