@@ -57,28 +57,91 @@ def display_results(model_name, model, X_test, y_test):
     # Afficher les paramètres spécifiques aux modèles
     if isinstance(model, LinearRegression):
         st.write("Paramètres du modèle :")
-        st.write(f" - Dans le cadre d'une regression simple, on a une seule variable explicative: nous choisissons la cylindrée, 'ec (cm3)'")
         st.write(f" - Coefficient (pente) : {model.coef_[0]:.4f}")
         st.write(f" - Intercept (ordonnée à l'origine) : {model.intercept_:.4f}")
+
+# Fonction appelée à chaque sélection de modèle
+def handle_model_selection(model_name, model_class, hyperparameters, X_train_scaled, X_test_scaled, y_train, y_test):
+    # Sélection des variables explicatives en fonction du modèle
+    if model_name == "Régression Linéaire":
+        X_train = X_train_scaled[['ec (cm3)']]
+        X_test = X_test_scaled[['ec (cm3)']]
+    else:
+        X_train = X_train_scaled
+        X_test = X_test_scaled
+
+    # Charger les hyperparamètres du modèle
+    model = model_class(**hyperparameters)
+
+    # Entraîner le modèle
+    trained_model = train_model(model, X_train, y_train)
+
+    # Afficher les résultats
+    display_results(model_name, trained_model, X_test, y_test)
 
 # Charger les données
 X_train_scaled, X_test_scaled, y_train, y_test = load_our_data()
 
-# Interface utilisateur pour sélectionner le modèle
+# Liste des modèles et hyperparamètres
 model_options = {
-    "Régression Linéaire": LinearRegression(),
-    "Forêt Aléatoire": RandomForestRegressor(),
-    "Support Vector Machine (SVM)": SVR()
+    "Régression Linéaire": {
+        "class": LinearRegression,
+        "hyperparameters": {}
+    },
+    "Forêt Aléatoire": {
+        "class": RandomForestRegressor,
+        "hyperparameters": {
+            "n_estimators": 100,
+            "max_depth": 3
+        }
+    },
+    "Support Vector Machine (SVM)": {
+        "class": SVR,
+        "hyperparameters": {
+            "C": 1.0,
+            "kernel": "rbf"
+        }
+    }
 }
 
+# Interface utilisateur pour sélectionner un modèle
 model_choice = st.selectbox("Choisissez un modèle :", list(model_options.keys()))
 
+# Obtenir la classe et les hyperparamètres du modèle sélectionné
+selected_model_class = model_options[model_choice]["class"]
+selected_model_hyperparameters = model_options[model_choice]["hyperparameters"]
+
+# Appeler la fonction pour gérer la sélection du modèle
+handle_model_selection(
+    model_name=model_choice,
+    model_class=selected_model_class,
+    hyperparameters=selected_model_hyperparameters,
+    X_train_scaled=X_train_scaled,
+    X_test_scaled=X_test_scaled,
+    y_train=y_train,
+    y_test=y_test
+)
+
+
+
+
+
+
+# Interface utilisateur pour sélectionner le modèle
+#model_options = {
+#    "Régression Linéaire": LinearRegression(),
+#    "Forêt Aléatoire": RandomForestRegressor(),
+#    "Support Vector Machine (SVM)": SVR()
+#}
+
+#model_choice = st.selectbox("Choisissez un modèle :", list(model_options.keys()))
+
 # Sélectionner la variable explicative 'ec (cm3)'
-X_train_ec = X_train_scaled[['ec (cm3)']]
-X_test_ec = X_test_scaled[['ec (cm3)']]
+#X_train_ec = X_train_scaled[['ec (cm3)']]
+#X_test_ec = X_test_scaled[['ec (cm3)']]
 
 # Entraîner le modèle sélectionné
-selected_model = train_model(model_options[model_choice], X_train_ec, y_train)
+#selected_model = train_model(model_options[model_choice], X_train_ec, y_train)
 
 # Afficher les résultats
-display_results(model_choice, selected_model, X_test_ec, y_test)
+#display_results(model_choice, selected_model, X_test_ec, y_test)
