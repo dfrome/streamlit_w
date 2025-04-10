@@ -1,4 +1,6 @@
 # ce fichier contient des fonctions utilitaires pour les pages streamlit du projet "emissions CO2"
+import streamlit as st
+
 
 def display_model_parameters(model):
     """
