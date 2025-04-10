@@ -2,7 +2,7 @@
 import streamlit as st
 
 
-def display_model_parameters(model):
+def display_model_parameters(model, X_test=None):
     """
     Affiche les paramètres spécifiques des modèles de régression et de classification.
     Compatible avec les modèles suivants :
@@ -39,8 +39,18 @@ def display_model_parameters(model):
         st.write(f"- Profondeur maximale (max_depth) : {model.max_depth}")
     if hasattr(model, "n_estimators"):
         st.write(f"- Nombre d'arbres (n_estimators) : {model.n_estimators}")
-    if hasattr(model, "feature_importances_"):
-        st.write(f"- Importance des variables : {model.feature_importances_}")
+    if hasattr(model, "feature_importances_") and X_test is not None:
+        st.write("**Graphique des importances des variables :**")
+        # Créer un DataFrame associant noms des variables et importances
+        importances = pd.DataFrame({
+            "Variable": X_test.columns,
+            "Importance": model.feature_importances_
+        }).sort_values(by="Importance", ascending=False)
+        
+        # Afficher le graphique
+        st.bar_chart(importances.set_index("Variable"))
+#    if hasattr(model, "feature_importances_"):
+#        st.write(f"- Importance des variables : {model.feature_importances_}")
     
     # Modèles k-NN (K-Nearest Neighbors)
     if hasattr(model, "n_neighbors"):
