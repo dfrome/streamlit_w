@@ -14,7 +14,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from xgboost import XGBClassifier
-from lightgbm import LGBMClassifier
+#from lightgbm import LGBMClassifier
 from catboost import CatBoostClassifier
 from sklearn.neural_network import MLPClassifier
 
