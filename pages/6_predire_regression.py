@@ -97,12 +97,40 @@ prediction = model.predict(vehicle_data_scaled)[0]
 st.subheader("Valeur prédite")
 st.write(f"Le modèle entraîné prévoit une émission de CO2 de :")
 
-# Afficher la prédiction avec un fort impact visuel
+# Afficher la prédiction avec des couleurs dynamiques basées sur la valeur
+st.subheader("Valeur Prédite")
+
+# Appliquer des styles conditionnels en fonction de la valeur de la prédiction
+if prediction > 200:
+    color = "#FF0000"  # Rouge
+elif prediction > 150:
+    color = "#FFA500"  # Orange
+else:
+    color = "#4CAF50"  # Vert
+
 st.markdown(
-    f"<div style='text-align: center; font-size: 40px; font-weight: bold; color: #4CAF50; margin: 20px 0;'>"
-    f"{prediction:.2f} g/km</div>",
+    f"<div style='text-align: center; font-size: 40px; font-weight: bold; color: {color}; margin: 20px 0;'>"
+    f"{prediction:.1f} g/km</div>",
     unsafe_allow_html=True
 )
+
+# Vérifier les groupes pour les incohérences
+fuel_types = ["Ft_petrol", "Ft_petrol/electric", "Ft_diesel/electric"]
+selected_fuel_types = sum([user_inputs[f] for f in fuel_types])
+if selected_fuel_types > 1:
+    st.warning("⚠️ Plus d'une case cochée parmi 'Essence', 'Essence/électrique' et 'Diesel+électrique'. Combinaison peu réaliste.")
+
+cr_types = ["Cr_M1G", "Cr_M1S", "Cr_N1G"]
+selected_cr_types = sum([user_inputs[cr] for cr in cr_types])
+if selected_cr_types > 1:
+    st.warning("⚠️ Plus d'une case cochée parmi les types de transport (Cr...). Veuillez vérifier vos choix.")
+
+fuel_modes = ["Fm_H", "Fm_M", "Fm_P"]
+selected_fuel_modes = sum([user_inputs[fm] for fm in fuel_modes])
+if selected_fuel_modes > 1:
+    st.warning("⚠️ Plus d'une case cochée parmi les modes de carburant 'Hybride', 'Monofuel' et 'Plug-in'. Combinaison peu réaliste.")
+
+
 
 # Debugging section (optional)
 st.write("### Informations pour debug")
