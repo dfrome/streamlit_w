@@ -49,11 +49,12 @@ def display_model_parameters(model):
         st.write(f"- Type de pondération (weights) : {model.weights}")
     
     # Gestion générique des autres attributs
-    attributes = [attr for attr in dir(model) if not attr.startswith("_") and not callable(getattr(model, attr))]
-    if attributes:
-        st.write("**Autres attributs disponibles :**")
-        for attr in attributes:
-            st.write(f"- {attr} : {getattr(model, attr)}")
-    else:
-        st.write("- Aucun paramètre spécifique détecté pour ce modèle.")
+    # à l'utilisation , cela fournit bien trop de lignes !
+    # attributes = [attr for attr in dir(model) if not attr.startswith("_") and not callable(getattr(model, attr))]
+    #if attributes:
+    #    st.write("**Autres attributs disponibles :**")
+    #    for attr in attributes:
+    #        st.write(f"- {attr} : {getattr(model, attr)}")
+    #else:
+    #    st.write("- Aucun paramètre spécifique détecté pour ce modèle.")
 

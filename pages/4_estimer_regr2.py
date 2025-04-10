@@ -1,10 +1,10 @@
 # Ceci est une alternative au 4_estimer_CO2.py
 
-
 # Note à mes camarades de projet:
 # pour ajouter ou modifier un modèle,
 # éditez les fonctions handle_model_selection et display_results ("paramètres spécifiques au modèle")
 # et ajoutez (ou modifiez) le modèle dans le dictionnaire model_options
+# bonus si besoin : ajouter affichage de paramètres spécifiques au modèle dans display_model_parameters du fichier utils_streamlit_co2.py
 # Ensuite il faut déposer ce fichier sur le github servant à streamlit (si c'est le github de Denis, lui demander)
 
 
@@ -88,7 +88,7 @@ def display_results(model_name, model, X_test, y_test, hyperparameters):
     #    st.write(f" - Coefficient (pente) : {model.coef_[0]:.4f}")
     #    st.write(f" - Intercept (ordonnée à l'origine) : {model.intercept_:.4f}")
     display_model_parameters(model)
-    
+
 
 # Fonction appelée à chaque sélection de modèle
 def handle_model_selection(model_name, model_class, X_train_scaled, X_test_scaled, y_train, y_test):
@@ -96,6 +96,9 @@ def handle_model_selection(model_name, model_class, X_train_scaled, X_test_scale
     # par défaut, on utilise toutes les variables explicatives
     X_train = X_train_scaled
     X_test = X_test_scaled
+
+    # Initialisation des hyperparamètres par défaut
+    hyperparameters = {}
 
     # Gestion des hyperparamètres via Streamlit
     if model_name == "Régression Linéaire simple":
