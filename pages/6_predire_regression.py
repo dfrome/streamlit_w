@@ -1,4 +1,4 @@
-# title: Prédire l'émission
+# Page Name : Prédire l'émission de CO2
 import streamlit as st
 import pandas as pd
 import numpy as np

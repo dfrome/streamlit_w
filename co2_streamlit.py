@@ -1,3 +1,4 @@
+# title: Contexte
 import streamlit as st
 
 st.set_page_config(
@@ -7,12 +8,13 @@ st.set_page_config(
 
 st.write("# Emission de CO2 des véhicules  :earth_africa:")
 
-st.sidebar.success("Sélectionnez un thème.")
+st.sidebar.success(":point_up_2: Sélectionnez un thème.") # icode doigt vers le haut: :point_up_2:
+
 
 st.markdown(
     """
     Cette page présente les relations entre caractéristiques de véhicules et leur émission de CO2
-    Projet d'apprenants de l'organisme Datascientest
+    Projet d'apprenants de l'organisme Datascientest\n
     **👈 Faites votre choix depuis le volet d'exploration** pour développer un thème.
       
     ### Fait par

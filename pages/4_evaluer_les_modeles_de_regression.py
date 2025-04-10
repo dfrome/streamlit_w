@@ -1,4 +1,4 @@
-# Ceci est une alternative au 4_estimer_CO2.py
+# Page Name : Evaluer les modèles de régression
 
 # Note à mes camarades de projet:
 # pour ajouter ou modifier un modèle,
