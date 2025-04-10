@@ -95,7 +95,14 @@ prediction = model.predict(vehicle_data_scaled)[0]
 
 # Display the prediction
 st.subheader("Valeur prédite")
-st.write(f"La valeur prédite pour le véhicule entré est : **{prediction:.2f}**")
+st.write(f"Le modèle entraîné prévoit une émission de CO2 de :")
+
+# Afficher la prédiction avec un fort impact visuel
+st.markdown(
+    f"<div style='text-align: center; font-size: 40px; font-weight: bold; color: #4CAF50; margin: 20px 0;'>"
+    f"{prediction:.2f} g/km</div>",
+    unsafe_allow_html=True
+)
 
 # Debugging section (optional)
 st.write("### Informations pour debug")
