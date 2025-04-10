@@ -7,10 +7,35 @@ from sklearn.linear_model import LinearRegression
 
 from init_notebook import *
 
+# Liste des modèles disponibles
+models_dict = {
+    "Régression Linéaire Multiple": "reg_linear_multiple.pkl",
+    "Random Forest": "reg_rf.pkl",
+    # Ajouter d'autres modèles ici
+}
+
+# Boîte de sélection pour choisir un modèle
+selected_model_name = st.sidebar.selectbox(
+    "Sélectionnez un modèle :", list(models_dict.keys())
+)
+
+# Charger dynamiquement le modèle sélectionné
+model_file = models_dict[selected_model_name]
+model = joblib.load(base_models + model_file)
+
+# Page title
+st.title("Prédiction d'émission CO2")
+
+
+# Affichage du modèle sélectionné
+st.write("---")
+st.write(f"Prédictions avec le modèle : **{selected_model_name}**")
+st.write("---")
+
+
 # Load the saved scalers and the trained model
 robust_scaler = joblib.load(base_models + 'robust_scaler.pkl')
 min_max_scaler = joblib.load(base_models + 'min_max_scaler.pkl')
-model = joblib.load(base_models + 'reg_linear_multiple.pkl')
 
 # Define the columns and scaling categories
 robust_cols = ["m (kg)", "W (mm)", "At1 (mm)", "ec (cm3)", "ep (KW)"]
@@ -62,14 +87,6 @@ default_values = {
 # Combine all columns in the correct order
 all_columns = robust_cols + min_max_cols + binary_cols
 
-# Page title
-st.title("Prédiction d'émission CO2")
-
-st.write("---")
-st.write("Prédictions avec le modèle : Régression Linéaire")
-st.write("---")
-
-
 # Sidebar pour les caractéristiques du véhicule
 st.sidebar.header("Caractéristiques du véhicule")
 user_inputs = {}
@@ -96,9 +113,6 @@ prediction = model.predict(vehicle_data_scaled)[0]
 # Display the prediction
 st.subheader("Valeur prédite")
 st.write(f"Le modèle entraîné prévoit une émission de CO2 de :")
-
-# Afficher la prédiction avec des couleurs dynamiques basées sur la valeur
-st.subheader("Valeur Prédite")
 
 # Appliquer des styles conditionnels en fonction de la valeur de la prédiction
 if prediction > 200:
