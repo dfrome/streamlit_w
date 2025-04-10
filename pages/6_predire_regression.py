@@ -10,7 +10,7 @@ from init_notebook import *
 # Liste des modèles disponibles
 models_dict = {
     "Régression Linéaire Multiple": "reg_linear_multiple.pkl",
-    "Random Forest": "reg_rf.pkl",
+    "k_NN": "knn_model_distance_manh_10.pkl",
     # Ajouter d'autres modèles ici
 }
 
