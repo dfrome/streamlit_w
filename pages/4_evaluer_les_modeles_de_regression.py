@@ -36,8 +36,8 @@ st.set_page_config(
 
 st.markdown("# Estimations de l'émission de CO2")
 st.sidebar.header("Nous entraînons des modèles de régression à partir des données")
-st.write("Nous voulons estimer l'émission de CO2 en fonction des caractéristiques des véhicules  "
-"En science des données, on parle d'un sujet de regression: estimer une valeur numérique continue.")
+st.write("Nous voulons estimer l'émission de CO2 en fonction des caractéristiques des véhicules\n  "
+"En science des données, on parle alors d'un sujet de regression: estimer une valeur numérique continue.")
 
             
 def load_our_data():
