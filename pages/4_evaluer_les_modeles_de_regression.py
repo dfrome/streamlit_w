@@ -61,6 +61,7 @@ def train_model(model, X_train, y_train):
 
 # Fonction pour afficher les résultats
 def display_results(model_name, model, X_test, y_test, hyperparameters):
+    st.markdown("\n---\n")
     # Effectuer les prédictions
     y_pred = model.predict(X_test)
     
@@ -69,9 +70,10 @@ def display_results(model_name, model, X_test, y_test, hyperparameters):
     r2 = r2_score(y_test, y_pred)
 
     # Afficher les résultats principaux
-    st.write(f"### {model_name}")
+    st.write(f"### Evaluation du modèle {model_name}")
     st.write(f"- Mean Squared Error (MSE) : {mse:.2f}")
     st.write(f"- Coefficient de Détermination (R²) : {r2:.2f}")
+    st.markdown("\n---\n")
 
     # Afficher les hyperparamètres
     st.write("**Hyperparamètres utilisés :**")
@@ -80,6 +82,7 @@ def display_results(model_name, model, X_test, y_test, hyperparameters):
             st.write(f"- {param} : {value}")
     else:
         st.write("- Pas d'hyperparamètre appliqué")
+
     st.markdown("\n---\n")
 
     # Afficher les paramètres spécifiques au modèle
@@ -144,10 +147,10 @@ model_options = {
 # Interface utilisateur pour sélectionner un modèle
 model_choice = st.selectbox("Choisissez un modèle :", list(model_options.keys()))
 
-# Récupérer la classe du modèle sélectionné
+# Classe du modèle sélectionné
 selected_model_class = model_options[model_choice]
 
-# Appeler la fonction pour gérer la sélection du modèle
+# Sélection du modèle
 handle_model_selection(
     model_name=model_choice,
     model_class=selected_model_class,
@@ -161,4 +164,7 @@ handle_model_selection(
 # Streamlit widgets automatically run the script from top to bottom. Since
 # this button is not connected to any other logic, it just causes a plain
 # rerun.
-st.button("Recharger nos paramètres préférés")
+if st.button("Recharger nos paramètres préférés"):
+    st.session_state.clear()
+    st.experimental_rerun()
+
