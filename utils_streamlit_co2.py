@@ -68,3 +68,66 @@ def display_model_parameters(model, X_test=None):
     #else:
     #    st.write("- Aucun paramètre spécifique détecté pour ce modèle.")
 
+def display_model_parameters_classification(model):
+    """
+    Affiche les paramètres spécifiques du modèle de classification fourni.
+    Compatible avec les modèles que nous avons retenu:
+    Logistique, k-NN, Decision Tree, Random Forest,
+    SVM, Naive Bayes, GBM (XGBoost, LightGBM, CatBoost), et réseaux de neurones.
+    """
+    st.write("**Paramètres spécifiques du modèle :**")
+    
+    # Régression Logistique
+    if isinstance(model, LogisticRegression):
+        st.write(f"- Coefficients : {model.coef_}")
+        st.write(f"- Intercept : {model.intercept_}")
+    
+    # k-Nearest Neighbors
+    elif isinstance(model, KNeighborsClassifier):
+        st.write(f"- Nombre de voisins (n_neighbors) : {model.n_neighbors}")
+        st.write(f"- Métrique utilisée : {model.metric}")
+    
+    # Decision Tree
+    elif isinstance(model, DecisionTreeClassifier):
+        st.write(f"- Critère de division : {model.criterion}")
+        st.write(f"- Profondeur maximale (max_depth) : {model.max_depth}")
+    
+    # Random Forest
+    elif isinstance(model, RandomForestClassifier):
+        st.write(f"- Nombre d'arbres (n_estimators) : {model.n_estimators}")
+        st.write(f"- Critère de division : {model.criterion}")
+    
+    # Support Vector Machine (SVM)
+    elif isinstance(model, SVC):
+        st.write(f"- Type de noyau (kernel) : {model.kernel}")
+        st.write(f"- Paramètre C : {model.C}")
+    
+    # Naive Bayes
+    elif isinstance(model, GaussianNB):
+        st.write(f"- Variance des classes : {model.var_smoothing}")
+    
+    # GBM – XGBoost
+    elif isinstance(model, XGBClassifier):
+        st.write(f"- Nombre d'arbres : {model.n_estimators}")
+        st.write(f"- Taux d'apprentissage (learning_rate) : {model.learning_rate}")
+        st.write(f"- Profondeur maximale des arbres : {model.max_depth}")
+    
+    # GBM – LightGBM
+    elif isinstance(model, LGBMClassifier):
+        st.write(f"- Nombre d'itérations (n_estimators) : {model.n_estimators}")
+        st.write(f"- Taux d'apprentissage (learning_rate) : {model.learning_rate}")
+        st.write(f"- Nombre de feuilles (num_leaves) : {model.num_leaves}")
+    
+    # GBM – CatBoost
+    elif isinstance(model, CatBoostClassifier):
+        st.write(f"- Nombre d'itérations : {model.get_params()['iterations']}")
+        st.write(f"- Taux d'apprentissage (learning_rate) : {model.get_params()['learning_rate']}")
+    
+    # Réseaux de neurones – couches denses
+    elif isinstance(model, MLPClassifier):
+        st.write(f"- Nombre de couches cachées : {model.hidden_layer_sizes}")
+        st.write(f"- Taux d'apprentissage : {model.learning_rate}")
+        st.write(f"- Activation utilisée : {model.activation}")
+    
+    else:
+        st.write("(Nota: Modèle non reconnu ou pas encore pris en charge dans la fonction d'affichage des paramètres)")
