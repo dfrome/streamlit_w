@@ -1,3 +1,4 @@
+# title: Prédire l'émission
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -47,24 +48,38 @@ feature_name_mapping = {
     "Fm_M": "Fuel mode Monofuel",
     "Fm_P": "Fuel mode Plug-in"
 }
+
+
+# Valeurs initiales pour chaque colonne
+default_values = {
+    "m (kg)": 1350, "W (mm)": 2690, "At1 (mm)": 1510, "ec (cm3)": 1500, "ep (KW)": 77,
+    "z (Wh/km)": 0, "Electric range (km)": 0,
+    "IT28": 0, "IT29": 0, "IT32": 0, "IT33": 0, "IT35": 0, "IT37": 0, "IT38": 0, "IT39": 0,
+    "Ft_diesel/electric": 1, "Ft_petrol": 0, "Ft_petrol/electric": 0,
+    "Cr_M1G": 0, "Cr_M1S": 1, "Cr_N1G": 0, "Fm_H": 0, "Fm_M": 1, "Fm_P": 0
+}
+
 # Combine all columns in the correct order
 all_columns = robust_cols + min_max_cols + binary_cols
 
 # Page title
 st.title("Prédiction d'émission CO2")
-st.write("Entrez les caractéristiques de votre véhicule.")
 
-# Sidebar for user input
+st.write("---")
+st.write("Prédictions avec le modèle : Régression Linéaire")
+st.write("---")
+
+
+# Sidebar pour les caractéristiques du véhicule
 st.sidebar.header("Caractéristiques du véhicule")
 user_inputs = {}
 for col in all_columns:
     if col in binary_cols:
-        # Checkbox for binary columns
-        user_inputs[col] = int(st.sidebar.checkbox(feature_name_mapping[col], value=False))
+        # Checkbox pour les colonnes binaires
+        user_inputs[col] = int(st.sidebar.checkbox(feature_name_mapping[col], value=bool(default_values[col])))
     else:
-        # Number input for scaled columns
-        default_value = 0.0
-        user_inputs[col] = st.sidebar.number_input(feature_name_mapping[col], value=default_value)
+        # Input numérique pour les colonnes scalées
+        user_inputs[col] = st.sidebar.number_input(feature_name_mapping[col], value=float(default_values[col]))
 
 # Convert user inputs into a DataFrame with consistent column names and order
 vehicle_data = pd.DataFrame([user_inputs])[all_columns]
