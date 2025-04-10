@@ -133,8 +133,8 @@ if selected_fuel_modes > 1:
 
 
 # Debugging section (optional)
-st.write("### Informations pour debug")
-st.write("Données entrées brut :")
-st.dataframe(vehicle_data)
-st.write("Données après mise à l'échelle :")
-st.dataframe(vehicle_data_scaled)
+#st.write("### Informations pour debug")
+#st.write("Données entrées brut :")
+#st.dataframe(vehicle_data)
+#st.write("Données après mise à l'échelle :")
+#st.dataframe(vehicle_data_scaled)
