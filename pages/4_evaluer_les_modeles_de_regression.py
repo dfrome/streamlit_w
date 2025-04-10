@@ -166,5 +166,5 @@ handle_model_selection(
 # rerun.
 if st.button("Recharger nos paramètres préférés"):
     st.session_state.clear()
-    st.experimental_rerun()
+    st.session_state["reset"] = True
 

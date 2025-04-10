@@ -2,6 +2,12 @@
 import streamlit as st
 import pandas as pd
 
+# pour les if isinstance
+from sklearn.linear_model import LogisticRegression, LinearRegression, Ridge, Lasso, ElasticNet
+from sklearn.svm import SVR
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.neighbors import KNeighborsRegressor
 
 def display_model_parameters(model, X_test=None):
     """
