@@ -1,5 +1,6 @@
 # ce fichier contient des fonctions utilitaires pour les pages streamlit du projet "emissions CO2"
 import streamlit as st
+import pandas as pd
 
 
 def display_model_parameters(model, X_test=None):
@@ -71,64 +72,75 @@ def display_model_parameters(model, X_test=None):
 
 def display_model_parameters_classification(model, X_test=None):
     """
-    Affiche les paramètres spécifiques du modèle de classification fourni.
-    Compatible avec les modèles que nous avons retenu:
-    Logistique, k-NN, Decision Tree, Random Forest,
-    SVM, Naive Bayes, GBM (XGBoost, LightGBM, CatBoost), et réseaux de neurones.
+    Affiche les paramètres spécifiques du modèle de classification fourni, 
+    ainsi que les importances des variables si disponibles.
     """
-    st.write("**Paramètres spécifiques du modèle :**")
+    st.write("**Paramètres du modèle :**")
     
-    # Régression Logistique
+    # Affichage des paramètres en fonction du type de modèle
     if isinstance(model, LogisticRegression):
-        st.write(f"- Coefficients : {model.coef_}")
+        st.write(f"- Coefficients des variables : {model.coef_[0]}")
         st.write(f"- Intercept : {model.intercept_}")
     
-    # k-Nearest Neighbors
     elif isinstance(model, KNeighborsClassifier):
         st.write(f"- Nombre de voisins (n_neighbors) : {model.n_neighbors}")
         st.write(f"- Métrique utilisée : {model.metric}")
     
-    # Decision Tree
     elif isinstance(model, DecisionTreeClassifier):
         st.write(f"- Critère de division : {model.criterion}")
         st.write(f"- Profondeur maximale (max_depth) : {model.max_depth}")
     
-    # Random Forest
     elif isinstance(model, RandomForestClassifier):
         st.write(f"- Nombre d'arbres (n_estimators) : {model.n_estimators}")
         st.write(f"- Critère de division : {model.criterion}")
+        st.write(f"- Profondeur maximale (max_depth) : {model.max_depth}")
     
-    # Support Vector Machine (SVM)
     elif isinstance(model, SVC):
         st.write(f"- Type de noyau (kernel) : {model.kernel}")
         st.write(f"- Paramètre C : {model.C}")
     
-    # Naive Bayes
     elif isinstance(model, GaussianNB):
-        st.write(f"- Variance des classes : {model.var_smoothing}")
+        st.write(f"- Variance des classes (var_smoothing) : {model.var_smoothing}")
     
-    # GBM – XGBoost
     elif isinstance(model, XGBClassifier):
         st.write(f"- Nombre d'arbres : {model.n_estimators}")
         st.write(f"- Taux d'apprentissage (learning_rate) : {model.learning_rate}")
         st.write(f"- Profondeur maximale des arbres : {model.max_depth}")
     
-    # GBM – LightGBM
     elif isinstance(model, LGBMClassifier):
         st.write(f"- Nombre d'itérations (n_estimators) : {model.n_estimators}")
         st.write(f"- Taux d'apprentissage (learning_rate) : {model.learning_rate}")
         st.write(f"- Nombre de feuilles (num_leaves) : {model.num_leaves}")
     
-    # GBM – CatBoost
     elif isinstance(model, CatBoostClassifier):
         st.write(f"- Nombre d'itérations : {model.get_params()['iterations']}")
         st.write(f"- Taux d'apprentissage (learning_rate) : {model.get_params()['learning_rate']}")
     
-    # Réseaux de neurones – couches denses
     elif isinstance(model, MLPClassifier):
-        st.write(f"- Nombre de couches cachées : {model.hidden_layer_sizes}")
+        st.write(f"- Nombre de couches cachées (hidden_layer_sizes) : {model.hidden_layer_sizes}")
         st.write(f"- Taux d'apprentissage : {model.learning_rate}")
-        st.write(f"- Activation utilisée : {model.activation}")
+        st.write(f"- Fonction d'activation utilisée : {model.activation}")
     
     else:
-        st.write("(Nota: Modèle non reconnu ou pas encore pris en charge dans la fonction d'affichage des paramètres)")
+        st.write("Nota: Modèle non reconnu ou pas encore pris en charge par l'affichage des paramètres.")
+
+    # Affichage des importances des variables
+    if hasattr(model, "feature_importances_") and X_test is not None:
+        st.write("**Graphique des importances des variables :**")
+        
+        # Créer un DataFrame associant noms des variables et importances
+        importances = pd.DataFrame({
+            "Variable": X_test.columns,
+            "Importance": model.feature_importances_
+        }).sort_values(by="Importance", ascending=False)
+        
+        # Afficher le tableau des importances
+        st.write(importances)
+        
+        # Tracer un graphique des importances
+        st.bar_chart(importances.set_index("Variable")["Importance"])
+
+    else:
+        st.write("Ce modèle ne fournit pas d'importances intrinsèques des variables.")
+
+    
