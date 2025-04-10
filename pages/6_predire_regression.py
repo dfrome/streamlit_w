@@ -9,7 +9,7 @@ from init_notebook import *
 # Load the saved scalers and the trained model
 robust_scaler = joblib.load(base_models + 'robust_scaler.pkl')
 min_max_scaler = joblib.load(base_models + 'min_max_scaler.pkl')
-model = joblib.load(base_models + 'linear_regression_model.pkl')
+model = joblib.load(base_models + 'reg_linear_multiple.pkl')
 
 # Define the columns and scaling categories
 robust_cols = ["m (kg)", "W (mm)", "At1 (mm)", "ec (cm3)", "ep (KW)"]
