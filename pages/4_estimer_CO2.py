@@ -6,6 +6,8 @@ from PIL import Image
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
+# charge les chemins vers les fichiers de données : base_processed, base_raw, base_models...
+from init_notebook import base_processed, base_raw, base_models
 pd.set_option('future.no_silent_downcasting', True)
 
 #st.set_page_config(page_title="Plotting Demo", page_icon=":dart:")
@@ -47,9 +49,7 @@ st.sidebar.header("En science des données, on parle d'un sujet de regression: e
 
               
 def load_our_data():
-    # charge les chemins vers les fichiers de données : base_processed, base_raw, base_models...
-    %run init_notebook.py
-
+    
     X_train_scaled = pd.read_csv(base_processed + 'X_train_scaled.csv')
     X_test_scaled = pd.read_csv(base_processed + 'X_test_scaled.csv')
     y_train = pd.read_csv(base_processed + 'y_train.csv')
