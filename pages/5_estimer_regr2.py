@@ -40,89 +40,91 @@ def load_our_data():
     y_test = y_test[y_column]
     return X_train_scaled, X_test_scaled, y_train, y_test
 
-# Fonction pour entraîner un modèle
-def train_model(model, X_train, y_train):
-    model.fit(X_train, y_train)
-    return model
-
 # Fonction pour afficher les résultats
-def display_results(model_name, model, X_test, y_test):
+def display_results(model_name, model, X_test, y_test, hyperparameters):
+    # Effectuer les prédictions
     y_pred = model.predict(X_test)
+    
+    # Calculer les métriques
     mse = mean_squared_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
+
+    # Afficher les résultats principaux
     st.write(f"### {model_name}")
     st.write(f"- Mean Squared Error (MSE) : {mse:.2f}")
     st.write(f"- Coefficient de Détermination (R²) : {r2:.2f}")
 
-    # Afficher les paramètres spécifiques aux modèles
+    # Afficher les hyperparamètres
+    st.write("**Hyperparamètres utilisés :**")
+    for param, value in hyperparameters.items():
+        st.write(f"- {param} : {value}")
+
+    # Afficher les paramètres spécifiques au modèle
     if isinstance(model, LinearRegression):
-        st.write("Paramètres du modèle :")
+        st.write("**Paramètres du modèle :**")
         st.write(f" - Coefficient (pente) : {model.coef_[0]:.4f}")
         st.write(f" - Intercept (ordonnée à l'origine) : {model.intercept_:.4f}")
 
 # Fonction appelée à chaque sélection de modèle
-def handle_model_selection(model_name, model_class, hyperparameters, X_train_scaled, X_test_scaled, y_train, y_test):
-    # Sélection des variables explicatives en fonction du modèle
+def handle_model_selection(model_name, model_class, X_train_scaled, X_test_scaled, y_train, y_test):
+    # Gestion des hyperparamètres via Streamlit
     if model_name == "Régression Linéaire":
+        hyperparameters = {}
         X_train = X_train_scaled[['ec (cm3)']]
         X_test = X_test_scaled[['ec (cm3)']]
-    else:
+    elif model_name == "Forêt Aléatoire":
+        n_estimators = st.slider("Nombre d'arbres (n_estimators)", 10, 200, 100)
+        max_depth = st.slider("Profondeur maximale (max_depth)", 1, 20, 3)
+        hyperparameters = {
+            "n_estimators": n_estimators,
+            "max_depth": max_depth
+        }
+        X_train = X_train_scaled
+        X_test = X_test_scaled
+    elif model_name == "Support Vector Machine (SVM)":
+        C = st.slider("Paramètre C", 0.1, 10.0, 1.0)
+        kernel = st.selectbox("Type de noyau (kernel)", ["linear", "rbf", "poly"])
+        hyperparameters = {
+            "C": C,
+            "kernel": kernel
+        }
         X_train = X_train_scaled
         X_test = X_test_scaled
 
-    # Charger les hyperparamètres du modèle
+    # Charger les hyperparamètres dans le modèle
     model = model_class(**hyperparameters)
 
     # Entraîner le modèle
     trained_model = train_model(model, X_train, y_train)
 
     # Afficher les résultats
-    display_results(model_name, trained_model, X_test, y_test)
+    display_results(model_name, trained_model, X_test, y_test, hyperparameters)
 
 # Charger les données
 X_train_scaled, X_test_scaled, y_train, y_test = load_our_data()
 
-# Liste des modèles et hyperparamètres
+# Dictionnaire des modèles disponibles
 model_options = {
-    "Régression Linéaire": {
-        "class": LinearRegression,
-        "hyperparameters": {}
-    },
-    "Forêt Aléatoire": {
-        "class": RandomForestRegressor,
-        "hyperparameters": {
-            "n_estimators": 100,
-            "max_depth": 3
-        }
-    },
-    "Support Vector Machine (SVM)": {
-        "class": SVR,
-        "hyperparameters": {
-            "C": 1.0,
-            "kernel": "rbf"
-        }
-    }
+    "Régression Linéaire": LinearRegression,
+    "Forêt Aléatoire": RandomForestRegressor,
+    "Support Vector Machine (SVM)": SVR
 }
 
 # Interface utilisateur pour sélectionner un modèle
 model_choice = st.selectbox("Choisissez un modèle :", list(model_options.keys()))
 
-# Obtenir la classe et les hyperparamètres du modèle sélectionné
-selected_model_class = model_options[model_choice]["class"]
-selected_model_hyperparameters = model_options[model_choice]["hyperparameters"]
+# Récupérer la classe du modèle sélectionné
+selected_model_class = model_options[model_choice]
 
 # Appeler la fonction pour gérer la sélection du modèle
 handle_model_selection(
     model_name=model_choice,
     model_class=selected_model_class,
-    hyperparameters=selected_model_hyperparameters,
     X_train_scaled=X_train_scaled,
     X_test_scaled=X_test_scaled,
     y_train=y_train,
     y_test=y_test
 )
-
-
 
 
 
@@ -145,3 +147,19 @@ handle_model_selection(
 
 # Afficher les résultats
 #display_results(model_choice, selected_model, X_test_ec, y_test)
+# Fonction pour afficher les résultats
+"""
+def display_results(model_name, model, X_test, y_test):
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+    st.write(f"### {model_name}")
+    st.write(f"- Mean Squared Error (MSE) : {mse:.2f}")
+    st.write(f"- Coefficient de Détermination (R²) : {r2:.2f}")
+
+    # Afficher les paramètres spécifiques aux modèles
+    if isinstance(model, LinearRegression):
+        st.write("Paramètres du modèle :")
+        st.write(f" - Coefficient (pente) : {model.coef_[0]:.4f}")
+        st.write(f" - Intercept (ordonnée à l'origine) : {model.intercept_:.4f}")
+"""
