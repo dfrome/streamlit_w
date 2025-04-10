@@ -10,9 +10,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 from init_notebook import base_processed, base_raw, base_models
 pd.set_option('future.no_silent_downcasting', True)
 
-#st.set_page_config(page_title="Plotting Demo", page_icon=":dart:")
 st.set_page_config(
-    page_title="Projet Datascientest - émission de CO2 des véhicules.",
+    page_title="OLD Projet Datascientest - émission de CO2 des véhicules.",
     page_icon=":dart:",
 )
 
@@ -20,31 +19,12 @@ st.set_page_config(
 # sinon il y a :balances: aussi
 # ref: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
-st.markdown("# CO2 Estimations de l'émission de CO2")
-st.sidebar.header("En science des données, on parle d'un sujet de regression: estimer une valeur numérique continue")
+st.markdown("# OLD Estimations de l'émission de CO2")
+st.sidebar.header("OLD Nous entraînons des modèles de régression à partir des données")
+st.write("Nous voulons estimer l'émission de CO2 en fonction des caractéristiques des véhicules  "
+"En science des données, on parle d'un sujet de regression: estimer une valeur numérique continue.")
 
 
-
-#progress_bar = st.sidebar.progress(0)
-#status_text = st.sidebar.empty()
-#last_rows = np.random.randn(1, 1)
-#chart = st.line_chart(last_rows)
-
-#for i in range(1, 11):
-#    new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
-#    status_text.text("%i%% Complete" % i)
-#    chart.add_rows(new_rows)
-#    progress_bar.progress(i)
-#    last_rows = new_rows
-#    time.sleep(0.05)
-
-#progress_bar.empty()
-
-
-# Streamlit widgets automatically run the script from top to bottom. Since
-# this button is not connected to any other logic, it just causes a plain
-# rerun.
-#st.button("Re-run")
 
 
               
@@ -101,3 +81,27 @@ st.write(f"Coefficient de Détermination (R²) sur les données de test : {r2:.2
 st.write("Paramètres du modèle :")
 st.write(f" - Coefficient (pente) : {linear_model.coef_[0]:.4f}")
 st.write(f" - Intercept (ordonnée à l'origine) : {linear_model.intercept_:.4f}")
+
+
+
+
+#progress_bar = st.sidebar.progress(0)
+#status_text = st.sidebar.empty()
+#last_rows = np.random.randn(1, 1)
+#chart = st.line_chart(last_rows)
+
+#for i in range(1, 11):
+#    new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
+#    status_text.text("%i%% Complete" % i)
+#    chart.add_rows(new_rows)
+#    progress_bar.progress(i)
+#    last_rows = new_rows
+#    time.sleep(0.05)
+
+#progress_bar.empty()
+
+
+# Streamlit widgets automatically run the script from top to bottom. Since
+# this button is not connected to any other logic, it just causes a plain
+# rerun.
+#st.button("Re-run")
