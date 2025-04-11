@@ -78,7 +78,7 @@ def download_file_from_google_drive(file_id, destination):
                 downloaded_size += len(chunk)
                 progress.progress(downloaded_size / total_size)
 
-    st.success(f"Download complete! File saved as {destination}")
+    st.success(f"2 Download complete! File saved as {destination}")
 
     file_size = os.path.getsize(destination)
     print(f"File size: {file_size} bytes")
