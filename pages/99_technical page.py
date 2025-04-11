@@ -36,6 +36,8 @@ st.subheader("Number of Packages per Version")
 import joblib
 import requests
 import traceback
+from sklearn.ensemble import RandomForestRegressor
+
 
 
 file_id='1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU' 
@@ -104,20 +106,3 @@ except Exception as e:
 
 
 
-
-
-"""
-# Load the model
-try:
-    model_path = download_model()
-    model = joblib.load(model_path)
-    st.write("Model loaded successfully!")
-except Exception as e:
-    # Display a detailed error message
-    st.error("An error occurred while loading the model.")
-    st.write("### Exception Details:")
-    st.write(f"- **Type:** {type(e).__name__}")
-    st.write(f"- **Message:** {str(e)}")
-    st.write("### Full Traceback:")
-    st.text(traceback.format_exc())
-"""
