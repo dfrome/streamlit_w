@@ -20,6 +20,7 @@ models_dict = {
 selected_model_name = st.sidebar.selectbox(
     "Sélectionnez un modèle :", list(models_dict.keys())
 )
+st.sidebar.write("---")  # Separator line
 
 # Charger dynamiquement le modèle sélectionné
 model_file = models_dict[selected_model_name]

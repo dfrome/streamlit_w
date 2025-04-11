@@ -53,17 +53,17 @@ gdown.download(file_url, destination)
 file_size = os.path.getsize(destination)
 st.write(f"File size: {file_size} bytes")
 
-# Display the first 10 characters
-with open(destination, "rb") as file:
-    first_10_chars = file.read(10)
-    st.write(f"First 10 characters: {first_10_chars}")
+# for DEBUG: Display the first 10 characters
+#with open(destination, "rb") as file:
+#    first_10_chars = file.read(10)
+#    st.write(f"First 10 characters: {first_10_chars}")
 
 st.write("Loading the model...")
 import joblib
 model = joblib.load(destination)
 st.success("Model loaded successfully and ready for predictions!")
 
-
+# TODO: factoriser et appeler tous les modèles "gros"
 
 
 
