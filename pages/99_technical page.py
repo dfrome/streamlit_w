@@ -41,6 +41,9 @@ public_url = "https://drive.google.com/file/d/1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU/
 file_id = public_url.split("/d/")[1].split("/")[0]  # Extract the file ID
 download_url = f"https://drive.google.com/uc?id={file_id}&export=download"
 
+st.write("### Downloading the model...")
+st.write(f"**Model URL:** {download_url}")  
+
 # Download the file and cache it
 @st.cache_data
 def download_model():
@@ -55,6 +58,10 @@ try:
     model = joblib.load(model_path)
     st.write("Model loaded successfully!")
 except Exception as e:
-    st.write("Error loading model:", str(e))
-
-
+    # Display a detailed error message
+    st.error("An error occurred while loading the model.")
+    st.write("### Exception Details:")
+    st.write(f"- **Type:** {type(e).__name__}")
+    st.write(f"- **Message:** {str(e)}")
+    st.write("### Full Traceback:")
+    st.text(traceback.format_exc())
