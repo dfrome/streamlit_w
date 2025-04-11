@@ -47,7 +47,7 @@ def download_model():
     response = requests.get(download_url)
     with open("reg_rf.pkl", "wb") as file:
         file.write(response.content)
-    return "model.pkl"
+    return "reg_rf.pkl"
 
 # Load the model
 try:
