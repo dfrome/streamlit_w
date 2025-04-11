@@ -84,7 +84,7 @@ def download_file_from_google_drive(file_id, destination):
 
     # Display the first 10 characters
     with open(destination, "rb") as file:
-        first_10_chars = file.read(10)
+        first_10_chars = file.read(200)
         st.write(f"First 10 characters: {first_10_chars}")
 
     return destination
