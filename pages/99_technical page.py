@@ -40,7 +40,7 @@ import traceback
 # Provide the public URL and convert it to a direct download link
 public_url = "https://drive.google.com/file/d/1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU/view?usp=sharing"
 file_id = public_url.split("/d/")[1].split("/")[0]  # Extract the file ID
-download_url = f"https://drive.google.com/uc?id={file_id}&export=download"
+download_url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=t"
 
 st.write("### Downloading the model...")
 st.write(f"**Model URL:** {download_url}")  
