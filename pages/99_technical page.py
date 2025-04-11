@@ -2,7 +2,7 @@
 import streamlit as st
 import pkg_resources
 import pandas as pd
-import plotly.express as px
+#import plotly.express as px
 
 # Get the list of installed packages
 installed_packages = pkg_resources.working_set
