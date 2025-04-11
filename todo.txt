@@ -1,0 +1,24 @@
+evaluer les modeles de regression:
+    Ajouter les modeles manquants
+
+evaluer les modeles de classification:
+    Ajouter les modeles manquants
+    Débugger SVM ?
+    Matrice de confusion
+
+Pages technique / chargement des modeles
+    updater le titre: chargement des modeles
+    factoriser et charger tous les modèles dont le pkl est trop gros (avant ça: générer tous les modèles)
+
+pointeur: sur ce streamlit, environ 24h de travail au 11/04/2025
+mais attention, cela comprend aussi les plâtres pour download depuis G drive et autres recherches de solutions et requirement.txt avec conflit de versions
+Une fois qu'on connait tout ça, ça va + vite
+
+prediction classification
+    créer cette page, qui va ressembler à predire regression
+    chargement des modeles
+    faire les mêmes choses qu'en predire regression, mais avec affichage du macaron de catégorie
+
+
+general
+    dans les 2 pages de prediction, on pourrait avoir une fonction qui vérifier si les fichiers pkl existent. Si existent pas, les charger. Et il faut une page technique pour charger les fichiers de toutes façons afin de fetch des versions éventuellement plus récentes 

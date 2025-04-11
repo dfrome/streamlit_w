@@ -1,4 +1,4 @@
-# page title: Charger les modèles
+# Page Name : Charger les modèles
 # in my streamlit page, show to the user all installed python packages
 import streamlit as st
 import pkg_resources
