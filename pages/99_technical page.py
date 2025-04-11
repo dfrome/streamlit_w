@@ -42,7 +42,7 @@ import os
 
 
 file_id='1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU' 
-file_url='https://drive.google.com/file/d/1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU/view?usp=sharing'
+file_url='https://drive.google.com/uc?id=1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU'
 
 # we will be using gdown as in https://github.com/wkentaro/gdown
 import gdown
