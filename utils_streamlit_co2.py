@@ -1,6 +1,7 @@
 # ce fichier contient des fonctions utilitaires pour les pages streamlit du projet "emissions CO2"
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 # pour les if isinstance
 from sklearn.linear_model import LogisticRegression, LinearRegression, Ridge, Lasso, ElasticNet
@@ -151,10 +152,24 @@ def display_model_parameters_classification(model, X_test=None):
         }).sort_values(by="Importance", ascending=False)
         
         # Afficher le tableau des importances
-        st.write(importances)
+        #st.write(importances) # seulement si on veut
         
         # Tracer un graphique des importances
         st.bar_chart(importances.set_index("Variable")["Importance"])
+        st.write("**Graphique II des importances des variables :**")
+
+        # ALTAIR
+        chart = alt.Chart(importances).mark_bar().encode(
+            x=alt.X('Variable', sort='-y'),
+            y='Importance',
+            color='Importance'
+        ).properties(
+            width=600,
+            height=400
+        )
+        st.altair_chart(chart, use_container_width=True)
+        # /ALTAIR
+
 
     else:
         st.write("Ce modèle ne fournit pas d'importances intrinsèques des variables.")
