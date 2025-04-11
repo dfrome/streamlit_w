@@ -11,8 +11,9 @@ from init_notebook import *
 models_dict = {
     "Régression Linéaire Multiple": "reg_linear_multiple.pkl",
     "k_NN": "knn_model_distance_manh_10.pkl",
+    "random_forest": "reg_rf.pkl",
     # Ajouter d'autres modèles ici
-    # problem: reg_rf.pkl too big. maybe update just before exam
+    # reg_rf.pkl too big => store on google drive and download from there with gdown. To be checked before exam
 }
 
 # Boîte de sélection pour choisir un modèle

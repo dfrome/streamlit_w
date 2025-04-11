@@ -47,7 +47,7 @@ file_url='https://drive.google.com/uc?id=1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU'
 # we will be using gdown as in https://github.com/wkentaro/gdown
 import gdown
 
-destination = "reg_rf.pkl"
+destination = "models/reg_rf.pkl"
 gdown.download(file_url, destination)
 
 file_size = os.path.getsize(destination)
