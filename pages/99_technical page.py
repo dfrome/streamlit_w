@@ -35,6 +35,7 @@ st.subheader("Number of Packages per Version")
 
 import joblib
 import requests
+import traceback
 
 # Provide the public URL and convert it to a direct download link
 public_url = "https://drive.google.com/file/d/1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU/view?usp=sharing"
