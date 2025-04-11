@@ -99,7 +99,7 @@ for col in all_columns:
         user_inputs[col] = int(st.sidebar.checkbox(feature_name_mapping[col], value=bool(default_values[col])))
     else:
         # Input numérique pour les colonnes scalées
-        user_inputs[col] = st.sidebar.number_input(feature_name_mapping[col], value=float(default_values[col]))
+        user_inputs[col] = st.sidebar.number_input(feature_name_mapping[col], value=int(default_values[col]))  # en mettant value=float... on peut permettre des valeurs décimales
 
 # Convert user inputs into a DataFrame with consistent column names and order
 vehicle_data = pd.DataFrame([user_inputs])[all_columns]
