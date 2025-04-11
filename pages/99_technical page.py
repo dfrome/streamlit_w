@@ -60,7 +60,7 @@ def download_file_from_google_drive(file_id, destination):
         st.write(f"Cookie: {key} = {value}")
         if key.startswith("download_warning"):
             st.write("Large file detected. Handling Google Drive confirmation step...")
-            url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm={value}"
+            url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=p"
 
     # Start downloading the file
     response = session.get(url, stream=True)
