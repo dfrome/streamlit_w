@@ -37,22 +37,76 @@ import joblib
 import requests
 import traceback
 
-# Provide the public URL and convert it to a direct download link
-public_url = "https://drive.google.com/file/d/1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU/view?usp=sharing"
-file_id = public_url.split("/d/")[1].split("/")[0]  # Extract the file ID
-download_url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=t"
 
-st.write("### Downloading the model...")
-st.write(f"**Model URL:** {download_url}")  
+file_id='1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU' 
 
-# Download the file and cache it
-@st.cache_data
-def download_model():
-    response = requests.get(download_url)
-    with open("reg_rf.pkl", "wb") as file:
-        file.write(response.content)
-    return "reg_rf.pkl"
 
+def download_file_from_google_drive(file_id, destination):
+    url = f"https://drive.google.com/uc?id={file_id}&export=download"
+    session = requests.Session()
+
+    # Display starting message
+    st.write("Initiating download from Google Drive...")
+    
+    # Initial request
+    response = session.get(url, stream=True)
+    st.write("Checking for download confirmation cookies...")
+
+    # Handle confirmation cookies for large files
+    for key, value in response.cookies.items():
+        if key.startswith("download_warning"):
+            st.write("Large file detected. Handling Google Drive confirmation step...")
+            url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm={value}"
+
+    # Start downloading the file
+    response = session.get(url, stream=True)
+    total_size = int(response.headers.get("content-length", 0))
+    st.write(f"Downloading file: {destination} (Size: {total_size / (1024 * 1024):.2f} MB)")
+    
+    # Progress bar for the download
+    progress = st.progress(0)
+    downloaded_size = 0
+
+    # Save file in chunks
+    with open(destination, "wb") as file:
+        for chunk in response.iter_content(32768):  # Chunk size = 32 KB
+            if chunk:  # Filter out keep-alive chunks
+                file.write(chunk)
+                downloaded_size += len(chunk)
+                progress.progress(downloaded_size / total_size)
+
+    st.success(f"Download complete! File saved as {destination}")
+    return destination
+
+# Example usage
+destination = "reg_rf.pkl"
+
+try:
+    # Download and handle the file
+    model_path = download_file_from_google_drive(file_id, destination)
+    st.write("Loading the model...")
+    import joblib
+    model = joblib.load(model_path)
+    st.success("Model loaded successfully and ready for predictions!")
+except Exception as e:
+    st.error("An error occurred during file download or model loading.")
+    st.write("### Exception Details:")
+    st.write(f"- **Type:** {type(e).__name__}")
+    st.write(f"- **Message:** {str(e)}")
+    import traceback
+    st.write("### Full Traceback:")
+    st.text(traceback.format_exc())
+
+
+
+
+
+
+
+
+
+
+"""
 # Load the model
 try:
     model_path = download_model()
@@ -66,3 +120,4 @@ except Exception as e:
     st.write(f"- **Message:** {str(e)}")
     st.write("### Full Traceback:")
     st.text(traceback.format_exc())
+"""
