@@ -57,14 +57,13 @@ def download_file_from_google_drive(file_id, destination):
 
     # Handle confirmation cookies for large files
     for key, value in response.cookies.items():
+        st.write(f"Cookie: {key} = {value}")
         if key.startswith("download_warning"):
             st.write("Large file detected. Handling Google Drive confirmation step...")
             url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm={value}"
 
     # Start downloading the file
     response = session.get(url, stream=True)
-    total_size = int(response.headers.get("content-length", 0))
-    st.write(f"Downloading file: {destination} (Size: {total_size / (1024 * 1024):.2f} MB)")
     
     # Progress bar for the download
     progress = st.progress(0)
@@ -76,12 +75,12 @@ def download_file_from_google_drive(file_id, destination):
             if chunk:  # Filter out keep-alive chunks
                 file.write(chunk)
                 downloaded_size += len(chunk)
-                progress.progress(downloaded_size / total_size)
+                progress.progress(downloaded_size / 100000000)
 
-    st.success(f"2 Download complete! File saved as {destination}")
+    st.success(f"3 Download complete! File saved as {destination}")
 
     file_size = os.path.getsize(destination)
-    print(f"File size: {file_size} bytes")
+    print(f"3 File size: {file_size} bytes")
 
     # Display the first 10 characters
     with open(destination, "rb") as file:
