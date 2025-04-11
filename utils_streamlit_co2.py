@@ -155,21 +155,20 @@ def display_model_parameters_classification(model, X_test=None):
         #st.write(importances) # seulement si on veut
         
         # Tracer un graphique des importances
-        st.bar_chart(importances.set_index("Variable")["Importance"])
-        st.write("**Graphique II des importances des variables :**")
-
-        # ALTAIR
+        st.write("**Importances des variables :**")
         chart = alt.Chart(importances).mark_bar().encode(
             x=alt.X('Variable', sort='-y'),
             y='Importance',
-            color='Importance'
+            color=alt.Color("Importance",  # Définir la couleur basée sur l'importance
+                    scale=alt.Scale(
+                        range=["white", "red"]  # Dégradé de blanc à rouge
+                    ),
+                    legend=None)  # Supprime la légende si non nécessaire
         ).properties(
             width=600,
             height=400
         )
         st.altair_chart(chart, use_container_width=True)
-        # /ALTAIR
-
 
     else:
         st.write("Ce modèle ne fournit pas d'importances intrinsèques des variables.")

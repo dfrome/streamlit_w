@@ -22,7 +22,7 @@ st.set_page_config(
     page_icon=":placard:",
 )
 
-st.markdown("# Classification des caractéristiques des véhicules")
+st.markdown("# Classification des véhicules")
 st.sidebar.header("Nous entraînons des modèles de classification à partir des données")
 st.write("Nous voulons classifier les véhicules en fonction de leurs caractéristiques spécifiques. "
          "En science des données, on parle d'un sujet de classification: prédire une classe ou une catégorie.")
