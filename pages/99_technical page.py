@@ -42,73 +42,26 @@ import os
 
 
 file_id='1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU' 
+file_url='https://drive.google.com/file/d/1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU/view?usp=sharing'
 
+# we will be using gdown as in https://github.com/wkentaro/gdown
+import gdown
 
-def download_file_from_google_drive(file_id, destination):
-    url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=t"
-    session = requests.Session()
-
-    # Display starting message
-    st.write("Initiating download from Google Drive...")
-    
-    # Initial request
-    response = session.get(url, stream=True)
-    st.write("Checking for download confirmation cookies...")
-
-    # Handle confirmation cookies for large files
-    for key, value in response.cookies.items():
-        st.write(f"Cookie: {key} = {value}")
-        if key.startswith("download_warning"):
-            st.write("Large file detected. Handling Google Drive confirmation step...")
-            url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=t"
-
-    # Start downloading the file
-    response = session.get(url, stream=True)
-    
-    # Progress bar for the download
-    progress = st.progress(0)
-    downloaded_size = 0
-
-    # Save file in chunks
-    with open(destination, "wb") as file:
-        for chunk in response.iter_content(32768):  # Chunk size = 32 KB
-            if chunk:  # Filter out keep-alive chunks
-                file.write(chunk)
-                downloaded_size += len(chunk)
-                progress.progress(downloaded_size / 100000000)
-
-    st.success(f"3 Download complete! File saved as {destination}")
-
-    file_size = os.path.getsize(destination)
-    st.write(f"3 File size: {file_size} bytes")
-
-    # Display the first 10 characters
-    with open(destination, "rb") as file:
-        first_10_chars = file.read(200)
-        st.write(f"First 10 characters: {first_10_chars}")
-
-    return destination
-
-# Example usage
 destination = "reg_rf.pkl"
+gdown.download(file_url, destination)
 
-try:
-    # Download and handle the file
-    model_path = download_file_from_google_drive(file_id, destination)
-    st.write("Loading the model...")
-    import joblib
-    model = joblib.load(model_path)
-    st.success("Model loaded successfully and ready for predictions!")
-except Exception as e:
-    st.error("An error occurred during file download or model loading.")
-    st.write("### Exception Details:")
-    st.write(f"- **Type:** {type(e).__name__}")
-    st.write(f"- **Message:** {str(e)}")
-    import traceback
-    st.write("### Full Traceback:")
-    st.text(traceback.format_exc())
+file_size = os.path.getsize(destination)
+st.write(f"File size: {file_size} bytes")
 
+# Display the first 10 characters
+with open(destination, "rb") as file:
+    first_10_chars = file.read(10)
+    st.write(f"First 10 characters: {first_10_chars}")
 
+st.write("Loading the model...")
+import joblib
+model = joblib.load(destination)
+st.success("Model loaded successfully and ready for predictions!")
 
 
 
