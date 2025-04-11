@@ -17,7 +17,7 @@ st.write("""Dans les données originales, il y a beaucoup d'erreurs manifestes d
     Nous supprimons les données inutilisables,  
     Nous traitons les colonnes à ayant des valeurs manquantes.  
     Nous corrigeons ou supprimpons les aberrations.  
-    Et nousinterprêtons les codes.     """)
+    Et nous interprêtons les codes.     """)
 
 st.write("""
 Focus sur At1 et At2: en ayant fait un pairplot on s’est aperçu de la relation très linéaire entre les deux variables.  

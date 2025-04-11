@@ -12,6 +12,7 @@ models_dict = {
     "Régression Linéaire Multiple": "reg_linear_multiple.pkl",
     "k_NN": "knn_model_distance_manh_10.pkl",
     # Ajouter d'autres modèles ici
+    # problem: reg_rf.pkl too big. maybe update just before exam
 }
 
 # Boîte de sélection pour choisir un modèle
