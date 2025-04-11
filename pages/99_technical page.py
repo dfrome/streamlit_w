@@ -78,6 +78,15 @@ def download_file_from_google_drive(file_id, destination):
                 progress.progress(downloaded_size / total_size)
 
     st.success(f"Download complete! File saved as {destination}")
+
+    file_size = os.path.getsize(destination)
+    print(f"File size: {file_size} bytes")
+
+    # Display the first 10 characters
+    with open(destination, "rb") as file:
+        first_10_chars = file.read(10)
+        print(f"First 10 characters: {first_10_chars}")
+
     return destination
 
 # Example usage
