@@ -119,7 +119,7 @@ for col in all_columns:
         )
 
 # Image for preloading vehicle values
-st.sidebar.image("vehicle_preload_01.jpg", caption="Cliquez pour charger ce véhicule")
+st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Cliquez pour charger ce véhicule")
 
 # Button to preload values
 if st.sidebar.button("Charger ce véhicule"):
