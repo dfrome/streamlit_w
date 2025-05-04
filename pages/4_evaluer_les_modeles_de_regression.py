@@ -109,6 +109,7 @@ def handle_model_selection(model_name, model_class, X_train_scaled, X_test_scale
         X_train = X_train_scaled[['ec (cm3)']]
         X_test = X_test_scaled[['ec (cm3)']]
 
+    """
     elif model_name == "Forêt Aléatoire":
         n_estimators = st.slider("Nombre d'arbres (n_estimators)", 10, 200, 100)
         max_depth = st.slider("Profondeur maximale (max_depth)", 1, 20, 3)
@@ -116,6 +117,21 @@ def handle_model_selection(model_name, model_class, X_train_scaled, X_test_scale
             "n_estimators": n_estimators,
             "max_depth": max_depth
         }
+    """
+elif model_name == "Forêt Aléatoire":
+    n_estimators = st.slider("Nombre d'arbres (n_estimators)", 10, 200, 100)
+    max_depth = st.slider("Profondeur maximale (max_depth)", 1, 20, 3)
+    min_samples_split = st.slider("Nombre minimum d'échantillons pour diviser un nœud (min_samples_split)", 2, 10, 2)
+    min_samples_leaf = st.slider("Nombre minimum d'échantillons dans une feuille (min_samples_leaf)", 1, 10, 1)
+    max_features = st.selectbox("Nombre de caractéristiques maximales considérées à chaque split (max_features)", ["auto", "sqrt", "log2"])
+
+    hyperparameters = {
+        "n_estimators": n_estimators,
+        "max_depth": max_depth,
+        "min_samples_split": min_samples_split,
+        "min_samples_leaf": min_samples_leaf,
+        "max_features": max_features
+    }
 
     elif model_name == "Support Vector Machine (SVM)":
         C = st.slider("Paramètre C", 0.1, 10.0, 1.0)
