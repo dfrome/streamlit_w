@@ -133,24 +133,17 @@ if st.sidebar.button("Charger ce véhicule"):
         "Electric range (km)": 0
     })
     st.sidebar.success("Valeurs préchargées avec succès !")
+
+if "user_inputs" not in st.session_state:
+    st.session_state.user_inputs = {col: default_values[col] for col in all_columns}
+# Convert user inputs into a DataFrame with consistent column names
+vehicle_data = pd.DataFrame([st.session_state.user_inputs])[all_columns]
+
 ################################## /20250504 ####################################
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Convert user inputs into a DataFrame with consistent column names and order
-vehicle_data = pd.DataFrame([user_inputs])[all_columns]
+#vehicle_data = pd.DataFrame([user_inputs])[all_columns]
 
 # Scale the appropriate columns
 vehicle_data_scaled = vehicle_data.copy()
