@@ -81,7 +81,7 @@ feature_name_mapping = {
 # Valeurs initiales pour chaque colonne
 default_values = {
     "m (kg)": 1350, "W (mm)": 2690, "At1 (mm)": 1510, "ec (cm3)": 1500, "ep (KW)": 77,
-    "z (Wh/km)": 0, "Electric range (km)": 0,
+    "z (Wh/km)": 22, "Electric range (km)": 50,
     "IT28": 0, "IT29": 0, "IT32": 0, "IT33": 0, "IT35": 0, "IT37": 0, "IT38": 0, "IT39": 0,
     "Ft_diesel/electric": 1, "Ft_petrol": 0, "Ft_petrol/electric": 0,
     "Cr_M1G": 0, "Cr_M1S": 1, "Cr_N1G": 0, "Fm_H": 0, "Fm_M": 1, "Fm_P": 0
@@ -147,11 +147,21 @@ selected_fuel_modes = sum([user_inputs[fm] for fm in fuel_modes])
 if selected_fuel_modes > 1:
     st.warning("⚠️ Plus d'une case cochée parmi les modes de carburant 'Hybride', 'Monofuel' et 'Plug-in'. Combinaison peu réaliste.")
 
-# Display corresponding image based on CO2 prediction
-if prediction < 150:
-    st.image(base_images+"label_a.jpg", caption="Émission de CO2 faible", use_column_width=True)
-else:
-    st.image(base_images+"label_b.jpg", caption="Émission de CO2 élevée", use_column_width=True)
+# afficher l'étiquette énergatique correspondante
+co2_levels = {
+    "A": (0, 100, "label_a.jpg", "Émission de 0 à 100 g/km"),
+    "B": (101, 120, "label_b.jpg", "Émission de 101 à 120 g/km"),
+    "C": (121, 140, "label_c.jpg", "Émission de 121 à 140 g/km"),
+    "D": (141, 160, "label_d.jpg", "Émission de 141 à 160 g/km"),
+    "E": (161, 200, "label_e.jpg", "Émission de 161 à 200 g/km"),
+    "F": (201, 250, "label_f.jpg", "Émission de 201 à 250 g/km"),
+    "G": (250, float('inf'), "label_g.jpg", "Émission supérieure à 250 g/km")
+}
+for level, (min_val, max_val, image_file, caption) in co2_levels.items():
+    if min_val <= prediction <= max_val:
+        st.image(base_images + image_file, caption=caption)
+        break
+
 
 # Debugging section (optional)
 #st.write("### Informations pour debug")
