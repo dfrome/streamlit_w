@@ -106,17 +106,39 @@ all_columns = robust_cols + min_max_cols + binary_cols
 if "user_inputs" not in st.session_state:
     st.session_state.user_inputs = {col: default_values[col] for col in all_columns}
 
-# Sidebar for vehicle characteristics
+# mettre à jour session_state à chaque changement
+def update_session_state():
+    for col in all_columns:
+        st.session_state.user_inputs[col] = st.session_state[col]
+
 st.sidebar.header("Caractéristiques du véhicule")
 for col in all_columns:
     if col in binary_cols:
-        st.session_state.user_inputs[col] = int(
-            st.sidebar.checkbox(feature_name_mapping[col], value=bool(st.session_state.user_inputs[col]))
+        st.sidebar.checkbox(
+            feature_name_mapping[col],
+            value=bool(st.session_state.user_inputs[col]),
+            key=col,
+            on_change=update_session_state
         )
     else:
-        st.session_state.user_inputs[col] = st.sidebar.number_input(
-            feature_name_mapping[col], value=int(st.session_state.user_inputs[col])
+        st.sidebar.number_input(
+            feature_name_mapping[col],
+            value=int(st.session_state.user_inputs[col]),
+            key=col,
+            on_change=update_session_state
         )
+
+# Sidebar for vehicle characteristics
+#st.sidebar.header("Caractéristiques du véhicule")
+#for col in all_columns:
+#    if col in binary_cols:
+#        st.session_state.user_inputs[col] = int(
+#            st.sidebar.checkbox(feature_name_mapping[col], value=bool(st.session_state.user_inputs[col]))
+#        )
+#    else:
+#        st.session_state.user_inputs[col] = st.sidebar.number_input(
+#            feature_name_mapping[col], value=int(st.session_state.user_inputs[col])
+#        )
 
 # Image for preloading vehicle values
 st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Cliquez pour charger ce véhicule")
@@ -159,7 +181,7 @@ st.subheader("Valeur prédite")
 st.write(f"Le modèle entraîné prévoit une émission de CO2 de :")
 
 # Appliquer des styles conditionnels en fonction de la valeur de la prédiction
-if prediction > 160:
+if prediction > 200:
     color = "#FF0000"  # Rouge
 elif prediction > 120:
     color = "#FFA500"  # Orange
