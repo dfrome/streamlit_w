@@ -109,15 +109,6 @@ def handle_model_selection(model_name, model_class, X_train_scaled, X_test_scale
         X_train = X_train_scaled[['ec (cm3)']]
         X_test = X_test_scaled[['ec (cm3)']]
 
-    """
-    elif model_name == "Forêt Aléatoire":
-        n_estimators = st.slider("Nombre d'arbres (n_estimators)", 10, 200, 100)
-        max_depth = st.slider("Profondeur maximale (max_depth)", 1, 20, 3)
-        hyperparameters = {
-            "n_estimators": n_estimators,
-            "max_depth": max_depth
-        }
-    """
     elif model_name == "Forêt Aléatoire":
         n_estimators = st.slider("Nombre d'arbres (n_estimators)", 10, 200, 100)
         max_depth = st.slider("Profondeur maximale (max_depth)", 1, 20, 3)
