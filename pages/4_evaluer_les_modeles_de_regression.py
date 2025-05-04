@@ -114,14 +114,14 @@ def handle_model_selection(model_name, model_class, X_train_scaled, X_test_scale
         max_depth = st.slider("Profondeur maximale (max_depth)", 1, 20, 3)
         min_samples_split = st.slider("Nombre minimum d'échantillons pour diviser un nœud (min_samples_split)", 2, 10, 2)
         min_samples_leaf = st.slider("Nombre minimum d'échantillons dans une feuille (min_samples_leaf)", 1, 10, 1)
-        max_features = st.selectbox("Nombre de caractéristiques maximales considérées à chaque split (max_features)", ["auto", "sqrt", "log2"])
+        #max_features = st.selectbox("Nombre de caractéristiques maximales considérées à chaque split (max_features)", ["sqrt", "log2"])
 
         hyperparameters = {
             "n_estimators": n_estimators,
             "max_depth": max_depth,
             "min_samples_split": min_samples_split,
             "min_samples_leaf": min_samples_leaf,
-            "max_features": max_features
+            #"max_features": max_features
         }
 
     elif model_name == "Support Vector Machine (SVM)":
