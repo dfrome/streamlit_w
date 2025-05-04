@@ -146,13 +146,30 @@ st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Cliquez pour 
 # Button to preload values
 if st.sidebar.button("Charger ce véhicule"):
     st.session_state.user_inputs.update({
-        "m (kg)": 1350,
-        "W (mm)": 2690,
-        "At1 (mm)": 1510,
-        "ec (cm3)": 1500,
-        "ep (KW)": 66,
+        "m (kg)": 1293,
+        "W (mm)": 2638,
+        "At1 (mm)": 1558,
+        "ec (cm3)": 999,
+        "ep (KW)": 67,
         "z (Wh/km)": 0,
-        "Electric range (km)": 0
+        "Electric range (km)": 0,
+        "IT29": 1,
+        "IT37": 1,
+        "Ft_petrol": 1,
+        "Ft_diesel/electric": 0,
+        "Ft_petrol/electric": 0,
+        "Cr_M1G": 0,
+        "Cr_M1S": 0,
+        "Cr_N1G": 0,
+        "Fm_M": 1,
+        "Fm_H": 0,
+        "Fm_P": 0,
+        "IT28": 0,
+        "IT32": 0,
+        "IT33": 0,
+        "IT35": 0,
+        "IT38": 0,
+        "IT39": 0,
     })
     st.sidebar.success("Valeurs préchargées avec succès !")
 
@@ -226,51 +243,6 @@ for level, (min_val, max_val, image_file, caption) in co2_levels.items():
     if min_val <= prediction <= max_val:
         st.image(base_images + image_file, caption=caption)
         break
-
-
-st.write("--- debug ---")
-st.subheader("Données mises à l'échelle du véhicule")
-
-# Afficher les colonnes de la dernière ligne
-st.dataframe(vehicle_data_scaled.iloc[-1].to_frame().T)
-
-
-# Sidebar frame for vehicle preload
-#st.sidebar.markdown("### Charger un véhicule préconfiguré")
-# Affichage d'une image dans la barre latérale
-#st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Appliquer pour ce véhicule")
-
-# Ajout d'un bouton qui charge les valeurs lorsqu'il est cliqué
-#if st.sidebar.button("Charger ce véhicule"):
-#    user_inputs.update({
-#        "m (kg)": 1350,
-#        "W (mm)": 2690,
-#        "At1 (mm)": 1510,
-#        "ec (cm3)": 1500,
-#        "ep (KW)": 66,
-#        "z (Wh/km)": 0,
-#        "Electric range (km)": 0
-#    })
-#    st.sidebar.success("Valeurs préchargées avec succès !")
-
-
-
-# Charger l'image du véhicule préchargé
-#st.image(base_images + "preload_vehicle_01.jpeg", caption="Précharger les valeurs du véhicule")
-
-# Bouton pour précharger les valeurs
-#if st.button("Utiliser ces valeurs"):
-#    user_inputs.update({
-#        "m (kg)": 1350,
-#        "W (mm)": 2690,
-#        "At1 (mm)": 1510,
-#        "ec (cm3)": 1500,
-#        "ep (KW)": 77,
-#        "z (Wh/km)": 22,
-#        "Electric range (km)": 50
-#    })
-#    st.success("Valeurs de ce véhicule préchargées.")
-
 
 
 
