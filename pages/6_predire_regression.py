@@ -228,7 +228,11 @@ for level, (min_val, max_val, image_file, caption) in co2_levels.items():
         break
 
 
+st.write("--- debug ---")
+st.subheader("Données mises à l'échelle du véhicule")
 
+# Afficher les colonnes de la dernière ligne
+st.dataframe(vehicle_data_scaled.iloc[-1].to_frame().T)
 
 
 # Sidebar frame for vehicle preload
