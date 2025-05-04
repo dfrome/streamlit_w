@@ -168,25 +168,39 @@ for level, (min_val, max_val, image_file, caption) in co2_levels.items():
 
 
 
+# Sidebar frame for vehicle preload
+st.sidebar.markdown("### Charger un véhicule préconfiguré")
+if st.sidebar.image("vehicle_preload_01.jpg", caption="Cliquez pour charger ce véhicule"):
 
-
-
-
-# Charger l'image du véhicule préchargé
-st.image(base_images + "preload_vehicle_01.jpeg", caption="Précharger les valeurs du véhicule")
-
-# Bouton pour précharger les valeurs
-if st.button("Utiliser ces valeurs"):
+    # Preloading specific values
     user_inputs.update({
         "m (kg)": 1350,
         "W (mm)": 2690,
         "At1 (mm)": 1510,
         "ec (cm3)": 1500,
-        "ep (KW)": 77,
-        "z (Wh/km)": 22,
-        "Electric range (km)": 50
+        "ep (KW)": 66,
+        "z (Wh/km)": 0,
+        "Electric range (km)": 0
     })
-    st.success("Valeurs de ce véhicule préchargées.")
+    st.sidebar.success("Valeurs préchargées avec succès !")
+
+
+
+# Charger l'image du véhicule préchargé
+#st.image(base_images + "preload_vehicle_01.jpeg", caption="Précharger les valeurs du véhicule")
+
+# Bouton pour précharger les valeurs
+#if st.button("Utiliser ces valeurs"):
+#    user_inputs.update({
+#        "m (kg)": 1350,
+#        "W (mm)": 2690,
+#        "At1 (mm)": 1510,
+#        "ec (cm3)": 1500,
+#        "ep (KW)": 77,
+#        "z (Wh/km)": 22,
+#        "Electric range (km)": 50
+#    })
+#    st.success("Valeurs de ce véhicule préchargées.")
 
 
 
