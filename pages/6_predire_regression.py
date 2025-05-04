@@ -174,17 +174,17 @@ st.markdown(
 
 # Vérifier les groupes pour les incohérences
 fuel_types = ["Ft_petrol", "Ft_petrol/electric", "Ft_diesel/electric"]
-selected_fuel_types = sum([user_inputs[f] for f in fuel_types])
+selected_fuel_types = sum([st.session_state.user_inputs[f] for f in fuel_types])
 if selected_fuel_types > 1:
     st.warning("⚠️ Plus d'une case cochée parmi 'Essence', 'Essence/électrique' et 'Diesel+électrique'. Combinaison peu réaliste.")
 
 cr_types = ["Cr_M1G", "Cr_M1S", "Cr_N1G"]
-selected_cr_types = sum([user_inputs[cr] for cr in cr_types])
+selected_cr_types = sum([st.session_state.user_inputs[cr] for cr in cr_types])
 if selected_cr_types > 1:
     st.warning("⚠️ Plus d'une case cochée parmi les types de transport (Cr...). Veuillez vérifier vos choix.")
 
 fuel_modes = ["Fm_H", "Fm_M", "Fm_P"]
-selected_fuel_modes = sum([user_inputs[fm] for fm in fuel_modes])
+selected_fuel_modes = sum([st.session_state.user_inputs[fm] for fm in fuel_modes])
 if selected_fuel_modes > 1:
     st.warning("⚠️ Plus d'une case cochée parmi les modes de carburant 'Hybride', 'Monofuel' et 'Plug-in'. Combinaison peu réaliste.")
 
