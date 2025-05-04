@@ -118,9 +118,9 @@ st.subheader("Valeur prédite")
 st.write(f"Le modèle entraîné prévoit une émission de CO2 de :")
 
 # Appliquer des styles conditionnels en fonction de la valeur de la prédiction
-if prediction > 200:
+if prediction > 160:
     color = "#FF0000"  # Rouge
-elif prediction > 150:
+elif prediction > 120:
     color = "#FFA500"  # Orange
 else:
     color = "#4CAF50"  # Vert
@@ -147,7 +147,9 @@ selected_fuel_modes = sum([user_inputs[fm] for fm in fuel_modes])
 if selected_fuel_modes > 1:
     st.warning("⚠️ Plus d'une case cochée parmi les modes de carburant 'Hybride', 'Monofuel' et 'Plug-in'. Combinaison peu réaliste.")
 
-# afficher l'étiquette énergatique correspondante
+st.write(f"Cette émission donerait à ce véhicule l'étiquette :")
+
+# afficher l'étiquette énergétique correspondante
 co2_levels = {
     "A": (0, 100, "label_a.jpg", "Émission de 0 à 100 g/km"),
     "B": (101, 120, "label_b.jpg", "Émission de 101 à 120 g/km"),
@@ -161,6 +163,33 @@ for level, (min_val, max_val, image_file, caption) in co2_levels.items():
     if min_val <= prediction <= max_val:
         st.image(base_images + image_file, caption=caption)
         break
+
+
+
+
+
+
+
+
+
+# Charger l'image du véhicule préchargé
+st.image(base_images + "preload_vehicle_01.jpg", caption="Précharger les valeurs du véhicule")
+
+# Bouton pour précharger les valeurs
+if st.button("Utiliser ces valeurs"):
+    user_inputs.update({
+        "m (kg)": 1350,
+        "W (mm)": 2690,
+        "At1 (mm)": 1510,
+        "ec (cm3)": 1500,
+        "ep (KW)": 77,
+        "z (Wh/km)": 22,
+        "Electric range (km)": 50
+    })
+    st.success("Valeurs de ce véhicule préchargées.")
+
+
+
 
 
 # Debugging section (optional)
