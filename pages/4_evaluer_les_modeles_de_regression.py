@@ -121,6 +121,7 @@ def handle_model_selection(model_name, model_class, X_train_scaled, X_test_scale
             "max_depth": max_depth,
             "min_samples_split": min_samples_split,
             "min_samples_leaf": min_samples_leaf,
+            "random_state": 42,
             #"max_features": max_features
         }
 
