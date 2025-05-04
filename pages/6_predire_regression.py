@@ -91,15 +91,63 @@ default_values = {
 all_columns = robust_cols + min_max_cols + binary_cols
 
 # Sidebar pour les caractéristiques du véhicule
+#st.sidebar.header("Caractéristiques du véhicule")
+#user_inputs = {}
+#for col in all_columns:
+#    if col in binary_cols:
+#        # Checkbox pour les colonnes binaires
+#        user_inputs[col] = int(st.sidebar.checkbox(feature_name_mapping[col], value=bool(default_values[col])))
+#    else:
+#        # Input numérique pour les colonnes scalées
+#        user_inputs[col] = st.sidebar.number_input(feature_name_mapping[col], value=int(default_values[col]))  # en mettant value=float... on peut permettre des valeurs décimales
+
+
+################################## 20250504 ####################################
+if "user_inputs" not in st.session_state:
+    st.session_state.user_inputs = {col: default_values[col] for col in all_columns}
+
+# Sidebar for vehicle characteristics
 st.sidebar.header("Caractéristiques du véhicule")
-user_inputs = {}
 for col in all_columns:
     if col in binary_cols:
-        # Checkbox pour les colonnes binaires
-        user_inputs[col] = int(st.sidebar.checkbox(feature_name_mapping[col], value=bool(default_values[col])))
+        st.session_state.user_inputs[col] = int(
+            st.sidebar.checkbox(feature_name_mapping[col], value=bool(st.session_state.user_inputs[col]))
+        )
     else:
-        # Input numérique pour les colonnes scalées
-        user_inputs[col] = st.sidebar.number_input(feature_name_mapping[col], value=int(default_values[col]))  # en mettant value=float... on peut permettre des valeurs décimales
+        st.session_state.user_inputs[col] = st.sidebar.number_input(
+            feature_name_mapping[col], value=int(st.session_state.user_inputs[col])
+        )
+
+# Image for preloading vehicle values
+st.sidebar.image("vehicle_preload_01.jpg", caption="Cliquez pour charger ce véhicule")
+
+# Button to preload values
+if st.sidebar.button("Charger ce véhicule"):
+    st.session_state.user_inputs.update({
+        "m (kg)": 1350,
+        "W (mm)": 2690,
+        "At1 (mm)": 1510,
+        "ec (cm3)": 1500,
+        "ep (KW)": 66,
+        "z (Wh/km)": 0,
+        "Electric range (km)": 0
+    })
+    st.sidebar.success("Valeurs préchargées avec succès !")
+################################## /20250504 ####################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Convert user inputs into a DataFrame with consistent column names and order
 vehicle_data = pd.DataFrame([user_inputs])[all_columns]
@@ -169,22 +217,22 @@ for level, (min_val, max_val, image_file, caption) in co2_levels.items():
 
 
 # Sidebar frame for vehicle preload
-st.sidebar.markdown("### Charger un véhicule préconfiguré")
+#st.sidebar.markdown("### Charger un véhicule préconfiguré")
 # Affichage d'une image dans la barre latérale
-st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Appliquer pour ce véhicule")
+#st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Appliquer pour ce véhicule")
 
 # Ajout d'un bouton qui charge les valeurs lorsqu'il est cliqué
-if st.sidebar.button("Charger ce véhicule"):
-    user_inputs.update({
-        "m (kg)": 1350,
-        "W (mm)": 2690,
-        "At1 (mm)": 1510,
-        "ec (cm3)": 1500,
-        "ep (KW)": 66,
-        "z (Wh/km)": 0,
-        "Electric range (km)": 0
-    })
-    st.sidebar.success("Valeurs préchargées avec succès !")
+#if st.sidebar.button("Charger ce véhicule"):
+#    user_inputs.update({
+#        "m (kg)": 1350,
+#        "W (mm)": 2690,
+#        "At1 (mm)": 1510,
+#        "ec (cm3)": 1500,
+#        "ep (KW)": 66,
+#        "z (Wh/km)": 0,
+#        "Electric range (km)": 0
+#    })
+#    st.sidebar.success("Valeurs préchargées avec succès !")
 
 
 
