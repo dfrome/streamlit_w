@@ -2,3 +2,4 @@
 base_raw=""
 base_processed=""
 base_models="models/"
+base_images="images/"

@@ -149,9 +149,9 @@ if selected_fuel_modes > 1:
 
 # Display corresponding image based on CO2 prediction
 if prediction < 150:
-    st.image("../images/label_a.jpg", caption="Émission de CO2 faible", use_column_width=True)
+    st.image(base_images+"label_a.jpg", caption="Émission de CO2 faible", use_column_width=True)
 else:
-    st.image("../images/label_b.jpg", caption="Émission de CO2 élevée", use_column_width=True)
+    st.image(base_images+"label_b.jpg", caption="Émission de CO2 élevée", use_column_width=True)
 
 # Debugging section (optional)
 #st.write("### Informations pour debug")
