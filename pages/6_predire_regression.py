@@ -170,7 +170,7 @@ for level, (min_val, max_val, image_file, caption) in co2_levels.items():
 
 # Sidebar frame for vehicle preload
 st.sidebar.markdown("### Charger un véhicule préconfiguré")
-if st.sidebar.image("vehicle_preload_01.jpg", caption="Cliquez pour charger ce véhicule"):
+if st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Cliquez pour charger ce véhicule"):
 
     # Preloading specific values
     user_inputs.update({
