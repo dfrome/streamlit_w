@@ -173,7 +173,7 @@ for level, (min_val, max_val, image_file, caption) in co2_levels.items():
 
 
 # Charger l'image du véhicule préchargé
-st.image(base_images + "preload_vehicle_01.jpg", caption="Précharger les valeurs du véhicule")
+st.image(base_images + "preload_vehicle_01.jpeg", caption="Précharger les valeurs du véhicule")
 
 # Bouton pour précharger les valeurs
 if st.button("Utiliser ces valeurs"):
