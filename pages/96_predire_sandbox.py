@@ -79,8 +79,6 @@ if st.sidebar.button("Charger ce véhicule"):
     # Changer la clé du formulaire pour forcer la mise à jour
     st.session_state.form_key = f"form_{st.session_state['m (kg)']}"
     
-    # Forcer la réinitialisation de la page
-    st.experimental_rerun()
 
 # Convertir les entrées utilisateur en DataFrame
 vehicle_data = pd.DataFrame([{col: st.session_state[col] for col in default_values}])
