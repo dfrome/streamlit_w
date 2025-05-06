@@ -90,17 +90,6 @@ default_values = {
 # Combine all columns in the correct order
 all_columns = robust_cols + min_max_cols + binary_cols
 
-# Sidebar pour les caractéristiques du véhicule
-#st.sidebar.header("Caractéristiques du véhicule")
-#user_inputs = {}
-#for col in all_columns:
-#    if col in binary_cols:
-#        # Checkbox pour les colonnes binaires
-#        user_inputs[col] = int(st.sidebar.checkbox(feature_name_mapping[col], value=bool(default_values[col])))
-#    else:
-#        # Input numérique pour les colonnes scalées
-#        user_inputs[col] = st.sidebar.number_input(feature_name_mapping[col], value=int(default_values[col]))  # en mettant value=float... on peut permettre des valeurs décimales
-
 
 ################################## 20250504 ####################################
 if "user_inputs" not in st.session_state:
@@ -128,17 +117,7 @@ for col in all_columns:
             on_change=update_session_state
         )
 
-# Sidebar for vehicle characteristics
-#st.sidebar.header("Caractéristiques du véhicule")
-#for col in all_columns:
-#    if col in binary_cols:
-#        st.session_state.user_inputs[col] = int(
-#            st.sidebar.checkbox(feature_name_mapping[col], value=bool(st.session_state.user_inputs[col]))
-#        )
-#    else:
-#        st.session_state.user_inputs[col] = st.sidebar.number_input(
-#            feature_name_mapping[col], value=int(st.session_state.user_inputs[col])
-#        )
+
 
 # Image for preloading vehicle values
 st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Cliquez pour charger ce véhicule")
@@ -171,6 +150,7 @@ if st.sidebar.button("Charger ce véhicule"):
         "IT38": 0,
         "IT39": 0,
     })
+    update_session_state()
     st.sidebar.success("Valeurs préchargées avec succès !")
 
 if "user_inputs" not in st.session_state:

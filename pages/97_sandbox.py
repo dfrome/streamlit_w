@@ -40,7 +40,7 @@ with st.echo(code_location='below'):
             key='num_B3'
         )
         st.write(f"You set B3 to {st.session_state.B3}")
-    elif radio == "Add them 10/1":
+    elif radio == "Add them":
         st.write(f"A3 = {st.session_state.A3} and B3 = {st.session_state.B3}")
         button = st.button("Add A3 and B3")
         if button:
