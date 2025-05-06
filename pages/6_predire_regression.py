@@ -123,8 +123,9 @@ for col in all_columns:
 st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Cliquez pour charger ce véhicule")
 
 # Button to preload values
+    #    st.session_state.user_inputs.update({
 if st.sidebar.button("Charger ce véhicule"):
-    st.session_state.user_inputs.update({
+    st.session_state.update({
         "m (kg)": 1293,
         "W (mm)": 2638,
         "At1 (mm)": 1558,
