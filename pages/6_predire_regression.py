@@ -94,11 +94,12 @@ all_columns = robust_cols + min_max_cols + binary_cols
 ################################## 20250504 ####################################
 if "user_inputs" not in st.session_state:
     st.session_state.user_inputs = {col: default_values[col] for col in all_columns}
+    st.session_state.val = {col: default_values[col] for col in all_columns}
 
 # mettre à jour session_state à chaque changement
 def update_session_state():
     for col in all_columns:
-        st.session_state.user_inputs[col] = st.session_state[col]
+        st.session_state.user_inputs[col] = st.session_state.val[col]
 
 st.sidebar.header("Caractéristiques du véhicule")
 for col in all_columns:
@@ -106,14 +107,14 @@ for col in all_columns:
         st.sidebar.checkbox(
             feature_name_mapping[col],
             value=bool(st.session_state.user_inputs[col]),
-            key=col,
+            key=".val" + col,
             on_change=update_session_state
         )
     else:
         st.sidebar.number_input(
             feature_name_mapping[col],
             value=int(st.session_state.user_inputs[col]),
-            key=col,
+            key=".val" + col,
             on_change=update_session_state
         )
 
@@ -125,7 +126,7 @@ st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Cliquez pour 
 # Button to preload values
     #    st.session_state.user_inputs.update({
 if st.sidebar.button("Charger ce véhicule"):
-    st.session_state.update({
+    st.session_state.val.update({
         "m (kg)": 1293,
         "W (mm)": 2638,
         "At1 (mm)": 1558,
