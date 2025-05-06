@@ -28,6 +28,9 @@ with st.sidebar.form(key=st.session_state.form_key):
     
     # The Submit button for the form.
     submitted = st.form_submit_button("Calculer")
+    st.session_state.x = x_input
+    st.session_state.y = y_input
+    st.session_state.z = z_input
     
     if submitted:
         # Save the new values in session_state and compute the result.
