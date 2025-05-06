@@ -1,2 +1,4 @@
 # streamlit_win
- co2 win local den streamlit
+ CO2 streamlit
+ Développé par Denis Froment pour projet avec Polina et Vincent, DataScientest
+ Référence: win/C_20250301

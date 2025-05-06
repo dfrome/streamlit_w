@@ -1,12 +1,12 @@
 https://co2-sep24-ds-cont.streamlit.app/
 
 vu avec team
-    afficher classes correspondantes pour regression (au moins RF)
-    pre-fill avec des vrais véhicules
+    DONE - afficher classes correspondantes pour regression (au moins RF)
+    pre-fill avec des vrais véhicules => fort difficile, il y a conflit entre les champs d'input utilisateur en sidebar et les donnes de session qu'on peut adresser au clic de bouton.
 
 evaluer les modeles de regression:
     Ajouter les modeles manquants
-    en page common : affichage altair pour importance des variables
+    DONE en page common : affichage altair pour importance des variables
 
 evaluer les modeles de classification:
     Ajouter les modeles manquants
