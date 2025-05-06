@@ -1,64 +1,55 @@
 import streamlit as st
-import os
-import sys
 
-# Page configuration
+# Page Configuration
 st.set_page_config(page_title="Variable Calculator", page_icon="🔢")
 
-# Initialize a reset token (used to force widget reinitialization)
-if "reset_token" not in st.session_state:
-    st.session_state.reset_token = 0
-
-# Optionally initialize x, y, z if they don't exist
+# Initialize session state variables
 if "x" not in st.session_state:
     st.session_state.x = 0
 if "y" not in st.session_state:
     st.session_state.y = 0
 if "z" not in st.session_state:
     st.session_state.z = 0
+if "result" not in st.session_state:
+    st.session_state.result = None  # No result initially
+if "form_key" not in st.session_state:
+    st.session_state.form_key = "form_1"  # Unique key for form refresh
 
-# Sidebar: Input fields with unique keys that change when the reset token changes.
-x = st.sidebar.number_input(
-    "Valeur de x",
-    value=st.session_state.x,
-    key=f"x_{st.session_state.reset_token}"
-)
-y = st.sidebar.number_input(
-    "Valeur de y",
-    value=st.session_state.y,
-    key=f"y_{st.session_state.reset_token}"
-)
-z = st.sidebar.number_input(
-    "Valeur de z",
-    value=st.session_state.z,
-    key=f"z_{st.session_state.reset_token}"
-)
+# Sidebar Form with Unique Key
+with st.sidebar.form(key=st.session_state.form_key):
+    st.sidebar.header("Entrée des variables")
 
-# Save current widget values to session state
-st.session_state.x = x
-st.session_state.y = y
-st.session_state.z = z
+    x = st.number_input("Valeur de x", value=st.session_state.x, key="x_input")
+    y = st.number_input("Valeur de y", value=st.session_state.y, key="y_input")
+    z = st.number_input("Valeur de z", value=st.session_state.z, key="z_input")
 
-# Calculated result
-result = 100 * st.session_state.x + 10 * st.session_state.y + st.session_state.z
+    submitted = st.form_submit_button("Calculer")
 
-# Main frame display of the result
+    if submitted:
+        # Store values in session state
+        st.session_state.x = x
+        st.session_state.y = y
+        st.session_state.z = z
+        
+        # Perform the calculation
+        st.session_state.result = 100 * x + 10 * y + z
+
+# Main Display
 st.title("Calculateur de Résultat")
-st.write(f"Résultat calculé: **{result}**")
 
-# Function to rerun the app
-def rerun_app():
-    try:
-        st.experimental_rerun()  # Preferred method
-    except AttributeError:
-        os.execl(sys.executable, sys.executable, *sys.argv)
+if st.session_state.result is not None:
+    st.write(f"Résultat calculé: **{st.session_state.result}**")
 
-# Button in the main frame to reset values
+# Button to Reset Values
 if st.button("Réinitialiser à x=4, y=5, z=6"):
-    # Update session state with new default values
+    # Update session state values
     st.session_state.x = 4
     st.session_state.y = 5
     st.session_state.z = 6
-    # Increment the reset token to force widget reinitialization with new keys
-    st.session_state.reset_token += 1
-    rerun_app()  # Refresh the page so the new widget keys take effect
+    st.session_state.result = 100 * 4 + 10 * 5 + 6
+    
+    # Change form key to force refresh
+    st.session_state.form_key = f"form_{st.session_state.x}_{st.session_state.y}_{st.session_state.z}"
+
+    # Rerun the script so the new key takes effect
+    st.experimental_set_query_params(refresh=True)
