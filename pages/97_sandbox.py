@@ -24,9 +24,8 @@ result = 100 * x + 10 * y + z
 st.title("Calculateur de Résultat")
 st.write(f"Résultat calculé: **{result}**")
 
-# Button to reset values
+
+    # Button to reset values
 if st.button("Réinitialiser à x=4, y=5, z=6"):
-    st.session_state.x = 4
-    st.session_state.y = 5
-    st.session_state.z = 6
-    st.experimental_rerun()  # Force update of the inputs
+    st.session_state.update({"x": 4, "y": 5, "z": 6})
+    st.experimental_rerun()  # Force update of UI elements
