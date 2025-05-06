@@ -94,6 +94,8 @@ all_columns = robust_cols + min_max_cols + binary_cols
 ################################## 20250504 ####################################
 if "user_inputs" not in st.session_state:
     st.session_state.user_inputs = {col: default_values[col] for col in all_columns}
+if "val" not in st.session_state:
+    st.session_state.val = {col: default_values[col] for col in all_columns}
 
 # mettre à jour session_state à chaque changement
 def update_session_state():
