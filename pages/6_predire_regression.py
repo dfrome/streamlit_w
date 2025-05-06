@@ -108,14 +108,14 @@ for col in all_columns:
         st.session_state.user_inputs[col]=st.sidebar.checkbox(
             feature_name_mapping[col],
             value=bool(st.session_state.user_inputs[col]),
-            key="val" + col,
+            key="val_" + col,
             on_change=update_session_state
         )
     else:
         st.session_state.user_inputs[col]=st.sidebar.number_input(
             feature_name_mapping[col],
             value=int(st.session_state.user_inputs[col]),
-            key="val" + col,
+            key="val_" + col,
             on_change=update_session_state
         )
 
