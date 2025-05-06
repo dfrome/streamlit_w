@@ -49,9 +49,13 @@ for col, val in default_values.items():
     if col not in st.session_state:
         st.session_state[col] = val
 
-# Sidebar form for user input
+# Ajouter une clé de formulaire dynamique pour rafraîchir le formulaire lorsque les valeurs sont modifiées
+if "form_key" not in st.session_state:
+    st.session_state.form_key = "form_1"
+
+# Sidebar form for user input with dynamic key
 st.sidebar.header("Caractéristiques du véhicule")
-with st.sidebar.form("vehicle_form"):
+with st.sidebar.form(key=st.session_state.form_key):
     for col in default_values:
         if col in binary_cols:
             st.session_state[col] = st.checkbox(col, value=bool(st.session_state[col]))
@@ -60,7 +64,7 @@ with st.sidebar.form("vehicle_form"):
 
     submitted = st.form_submit_button("Mettre à jour")
 
-# Bouton pour précharger des valeurs spécifiques
+# Bouton pour précharger des valeurs spécifiques et rafraîchir le formulaire
 st.sidebar.image(base_images + "preload_vehicle_01.jpeg", caption="Cliquez pour charger ce véhicule")
 if st.sidebar.button("Charger ce véhicule"):
     predefined_values = {
@@ -71,7 +75,12 @@ if st.sidebar.button("Charger ce véhicule"):
         "IT38": 0, "IT39": 0,
     }
     st.session_state.update(predefined_values)
-    st.sidebar.success("Valeurs préchargées avec succès !")
+    
+    # Changer la clé du formulaire pour forcer la mise à jour
+    st.session_state.form_key = f"form_{st.session_state['m (kg)']}"
+    
+    # Forcer la réinitialisation de la page
+    st.experimental_rerun()
 
 # Convertir les entrées utilisateur en DataFrame
 vehicle_data = pd.DataFrame([{col: st.session_state[col] for col in default_values}])
