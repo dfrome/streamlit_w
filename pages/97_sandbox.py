@@ -62,3 +62,17 @@ if st.button("Réinitialiser à x=4, y=5, z=6"):
     
     # Activate the warning for re-submission
     st.session_state.reset_clicked = True
+
+# Button to Reset Values
+if st.button("Réinitialiser à x=7, y=8, z=9"):
+    # Update session state values
+    st.session_state.x = 7
+    st.session_state.y = 8
+    st.session_state.z = 9
+    st.session_state.result = None  # Clear the previous result
+    
+    # Change form key to force refresh
+    st.session_state.form_key = f"form_{st.session_state.x}_{st.session_state.y}_{st.session_state.z}"
+    
+    # Activate the warning for re-submission
+    st.session_state.reset_clicked = True
