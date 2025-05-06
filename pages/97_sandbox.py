@@ -1,46 +1,47 @@
+# we'll use callbacks to update the session state variables
+
 import streamlit as st
 
-# Page configuration
-st.set_page_config(page_title="Variable Calculator", page_icon="🔢")
 
-# Initialize session state variables if they don't exist yet.
-if "x" not in st.session_state:
-    st.session_state.x = 1
-if "y" not in st.session_state:
-    st.session_state.y = 0
-if "z" not in st.session_state:
-    st.session_state.z = 0
-if "result" not in st.session_state:
-    st.session_state.result = None
-if "form_key" not in st.session_state:
-    st.session_state.form_key = "form_1"
-if "reset_clicked" not in st.session_state:
-    st.session_state.reset_clicked = False  # Flag to show warning after reset
+demo = st.sidebar.radio(label="Select a demo", options=["toto1", "toto2", "toto3"])
 
-# Sidebar Form using the dynamic form key.
-with st.sidebar.form(key=st.session_state.form_key):
-    st.sidebar.header("Entrée des variables")
+st.subheader("mon subheader")
+st.sidebar.write("ma description"")
+st.markdown(f'##### go go go')
 
-    # The default values come from session_state.
-    x_input = st.number_input("Valeur de x", value=st.session_state.x, key="x_input")
-    y_input = st.number_input("Valeur de y", value=st.session_state.y, key="y_input")
-    z_input = st.number_input("Valeur de z", value=st.session_state.z, key="z_input")
-    
-    # The Submit button for the form.
-    submitted = st.form_submit_button("Calculer")
-    
-    if submitted:
-        # Save the new values in session_state and compute the result.
-        st.session_state.x = x_input
-        st.session_state.y = y_input
-        st.session_state.z = z_input
-        st.session_state.result = 100 * x_input + 10 * y_input + z_input
-        
-        # Clear the reset flag since the user has (re)submitted the form.
-        st.session_state.reset_clicked = False
+with st.echo(code_location='below'):
+    if 'A3' not in st.session_state:
+        st.session_state.A3 = 5
+    if 'B3' not in st.session_state:
+        st.session_state.B3 = 7
 
-# Main display area
-st.title("Calculateur de Résultat")
-if st.session_state.result is not None:
-    st.write(f"Résultat calculé: **{st.session_state.result}**")
-   
+    def _set_num_A3_cb():
+        st.session_state.A3 = st.session_state.num_A3
+    def _set_num_B3_cb():
+        st.session_state.B3 = st.session_state.num_B3
+
+    radio = st.radio(label="", label_visibility="hidden", options=["Set A3", "Set B3", "Add them"], horizontal=True)
+
+    if radio == "Set A3":
+        st.session_state.A3 = st.number_input(
+            label="What is A3?",
+            min_value=0, max_value=100,
+            value=st.session_state.A3,
+            on_change=_set_num_A3_cb,
+            key='num_A3'
+        )
+        st.write(f"You set A3 to {st.session_state.A3}")
+    elif radio == "Set B3":
+        st.session_state.B3 = st.number_input(
+            label="What is B3?",
+            min_value=0, max_value=100,
+            value=st.session_state.B3,
+            on_change=_set_num_B3_cb,
+            key='num_B3'
+        )
+        st.write(f"You set B3 to {st.session_state.B3}")
+    elif radio == "Add them 10/1":
+        st.write(f"A3 = {st.session_state.A3} and B3 = {st.session_state.B3}")
+        button = st.button("Add A3 and B3")
+        if button:
+            st.write(f"A3 + B3 = {st.session_state.A3*10 + st.session_state.B3}")
