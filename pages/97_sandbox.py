@@ -6,7 +6,7 @@ import streamlit as st
 demo = st.sidebar.radio(label="Select a demo", options=["toto1", "toto2", "toto3"])
 
 st.subheader("mon subheader")
-st.sidebar.write("ma description"")
+st.sidebar.write("ma description")
 st.markdown(f'##### go go go')
 
 with st.echo(code_location='below'):
