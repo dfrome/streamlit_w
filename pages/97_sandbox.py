@@ -35,9 +35,6 @@ with st.sidebar.form(key=st.session_state.form_key):
         
         # Perform the calculation
         st.session_state.result = 100 * x + 10 * y + z
-        
-        # Reset the warning
-        st.session_state.reset_clicked = False
 
 # Main Display
 st.title("Calculateur de Résultat")
@@ -45,9 +42,7 @@ st.title("Calculateur de Résultat")
 if st.session_state.result is not None:
     st.write(f"Résultat calculé: **{st.session_state.result}**")
 
-# Show warning if reset was clicked
-if st.session_state.reset_clicked:
-    st.warning("Les valeurs ont été réinitialisées. Veuillez soumettre à nouveau le formulaire pour recalculer.")
+
 
 # Button to Reset Values
 if st.button("Réinitialiser à x=4, y=5, z=6"):
@@ -61,7 +56,7 @@ if st.button("Réinitialiser à x=4, y=5, z=6"):
     st.session_state.form_key = f"form_{st.session_state.x}_{st.session_state.y}_{st.session_state.z}"
     
     # Activate the warning for re-submission
-    st.session_state.reset_clicked = True
+    st.warning("Les valeurs ont été réinitialisées. Veuillez soumettre à nouveau le formulaire pour recalculer.")
 
 # Button to Reset Values
 if st.button("Réinitialiser à x=7, y=8, z=9"):
@@ -75,4 +70,4 @@ if st.button("Réinitialiser à x=7, y=8, z=9"):
     st.session_state.form_key = f"form_{st.session_state.x}_{st.session_state.y}_{st.session_state.z}"
     
     # Activate the warning for re-submission
-    st.session_state.reset_clicked = True
+    st.warning("Les valeurs ont été réinitialisées. Veuillez soumettre à nouveau le formulaire pour recalculer.")
