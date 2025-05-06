@@ -94,7 +94,6 @@ all_columns = robust_cols + min_max_cols + binary_cols
 ################################## 20250504 ####################################
 if "user_inputs" not in st.session_state:
     st.session_state.user_inputs = {col: default_values[col] for col in all_columns}
-    st.session_state.val = {col: default_values[col] for col in all_columns}
 
 # mettre à jour session_state à chaque changement
 def update_session_state():
@@ -104,14 +103,14 @@ def update_session_state():
 st.sidebar.header("Caractéristiques du véhicule")
 for col in all_columns:
     if col in binary_cols:
-        st.sidebar.checkbox(
+        st.session_state.user_inputs[col]=st.sidebar.checkbox(
             feature_name_mapping[col],
             value=bool(st.session_state.user_inputs[col]),
             key=".val" + col,
             on_change=update_session_state
         )
     else:
-        st.sidebar.number_input(
+        st.session_state.user_inputs[col]=st.sidebar.number_input(
             feature_name_mapping[col],
             value=int(st.session_state.user_inputs[col]),
             key=".val" + col,
