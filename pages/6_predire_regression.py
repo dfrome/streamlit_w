@@ -37,7 +37,7 @@ st.sidebar.write("---")  # Separator line
 # Charger dynamiquement le modèle sélectionné
 model_file = models_dict[selected_model_name]
 
-destination = base_models + model_file  # Emplacement du fichier
+destination ="models/reg_rf.pkl"
 # **Vérifier si le modèle doit être téléchargé**
 if model_file in drive_links and not os.path.exists(destination):
     st.write(f"📥 Téléchargement du modèle {model_file}...")
