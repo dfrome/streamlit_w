@@ -1,14 +1,9 @@
 # Page Name : Prédire l'émission de CO2
-
-# en cas d'implémentation de nouveaux modèles, chercher le mot: FURTHERMODELS
-
 import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
 from sklearn.linear_model import LinearRegression
-import os
-import gdown  # Pour télécharger les modèles volumineux depuis Google Drive
 
 from init_notebook import *
 
@@ -17,16 +12,9 @@ models_dict = {
     "Régression Linéaire Multiple": "reg_linear_multiple.pkl",
     "k_NN": "knn_model_distance_manh_10.pkl",
     "random_forest": "reg_rf.pkl",
-    # FURTHERMODELS Ajouter d'autres modèles ici   # reg_rf.pkl too big => stored on google drive and downloaded from there with gdown. To be rehersed before exam
-    
+    # Ajouter d'autres modèles ici
+    # reg_rf.pkl too big => store on google drive and download from there with gdown. To be checked before exam
 }
-
-# Liens Google Drive pour les fichiers volumineux
-drive_links = {
-    "reg_rf.pkl": "https://drive.google.com/uc?id=1i6dUP4QvaAHP3W-wxLc2A9WtpISuU4RU",
-    # FURTHERMODELS Ajouter d'autres fichiers ici si besoin
-}
-
 
 # Boîte de sélection pour choisir un modèle
 selected_model_name = st.sidebar.selectbox(
@@ -36,20 +24,7 @@ st.sidebar.write("---")  # Separator line
 
 # Charger dynamiquement le modèle sélectionné
 model_file = models_dict[selected_model_name]
-
-destination ="models/reg_rf.pkl"
-# **Vérifier si le modèle doit être téléchargé**
-if model_file in drive_links and not os.path.exists(destination):
-    st.write(f"📥 Téléchargement du modèle {model_file}...")
-    gdown.download(drive_links[model_file], destination)
-    st.write(f"Téléchargement terminé : {destination} ({os.path.getsize(destination)} bytes)")
-
-model = joblib.load(destination)
-st.success(f"✅ Modèle {selected_model_name} chargé avec succès !")
-
-
-
-#model = joblib.load(base_models + model_file)
+model = joblib.load(base_models + model_file)
 
 # Page title
 st.title("Prédiction d'émission CO2")
