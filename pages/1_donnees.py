@@ -18,12 +18,6 @@ st.sidebar.header("Nous choisissons les données")
 
 images = [
     {"path": "images/introduction.png", "caption": "Type de carburant des véhicules par pays, base des ventes."},
-    {"path": "images/CO2ByFt.png", "caption": "Comparaison des émissions de CO2 par type de carburant."},
-    {"path": "images/CO2_byEp.png", "caption": "Relation entre puissance et émissions de CO2."},
-    {"path": "images/CO2ByFt.png", "caption": "Relation entre puissance et émissions de CO2."},
-    {"path": "images/relations_01.png", "caption": "Focus sur des relations entre variables explicatives et cible."},
-    {"path": "images/matrice_initiale.jpg", "caption": "Matrice de corrélation entre les valeurs numériques, base des modèles."},
-    
 ]
 
 # Affichage des images
