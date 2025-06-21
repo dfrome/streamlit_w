@@ -29,7 +29,7 @@ for img in images:
     except FileNotFoundError:
         st.error(f"Image non trouvée : {img['path']}")
 
-st.write("""Les donnés sont très complètes.  
-    Toutefois, dans la prochaine phase, il faut corriger la qualité de ces données.  """)
+#st.write("""Les donnés sont très complètes.  
+#    Toutefois, dans la prochaine phase, il faut corriger la qualité de ces données.  """)
 
 
