@@ -3,10 +3,10 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Projet Datascientest - émission de CO2 des véhicules",
-    page_icon=":earth_africa:",
-)
+    page_icon=":earth_europe:",
+)# ex _africa
 
-st.write("# Emission de CO2 des véhicules  :earth_africa:")
+st.write("# Emission de CO2 des véhicules  :earth_europe:")
 
 st.sidebar.success(":point_up_2: Sélectionnez un thème.") # icode doigt vers le haut: :point_up_2:
 
