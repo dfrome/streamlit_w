@@ -17,7 +17,7 @@ st.sidebar.header("Nous choisissons les données")
 #)
 
 images = [
-    {"path": "images/introduction.png", "caption": "Type de carburant des véhicules par pays, base des ventes."},
+    {"path": "images/introduction.png", "caption": ""},
 ]
 
 # Affichage des images
