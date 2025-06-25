@@ -14,26 +14,29 @@ st.markdown("# CO2 Feature engineering")
 st.sidebar.header("Nous corrigeons les données")
 
 st.write("""Dans les données originales, il y a beaucoup d'erreurs manifestes de saisie.   
-    Nous supprimons les données inutilisables,  
-    Nous traitons les colonnes à ayant des valeurs manquantes.  
+    Nous supprimons les données inutilisables (exemple hybrides sans autonomie),  
+    Nous traitons les colonnes ayant des valeurs manquantes.  
     Nous corrigeons ou supprimpons les aberrations.  
-    Et nous interprêtons les codes.     """)
+""")
 
-st.write("""
-Focus sur At1 et At2: en ayant fait un pairplot on s’est aperçu de la relation très linéaire entre les deux variables.  
-Le graphique ci-dessous l’illustre bien mais nous avons aussi voulu le confirmer statistiquement avec des tests de corrélation dont les résultats sont également précisés ci-après
+st.write("""Quelques particularités à noter: \n
+         Pour les voies avant et arrière (At1 et At2) : le pairplot montre une relation très linéaire entre elles.  
+Mais nous avons aussi voulu le confirmer statistiquement avec des tests de corrélation statistiques.
 """)
 image_path = "images/at1at2.jpg"
 image = Image.open(image_path)
-st.image(image, caption="relations At1/At2.")
+st.image(image, caption="\n")
 
+image_path = "images/cylindrees.png"
+image = Image.open(image_path)
+st.image(image, caption="Outliers précieux du point de vue métier.")
 
 image_path = "images/CorrectionsEmpattement.jpg"
 image = Image.open(image_path)
 st.image(image, caption="Outliers d'empattements comparés à la masse.")
 
 st.write("""
-On ajoute des features en explosant les codes d'innovative technology:
+On ajoute des features en explosant les codes d'innovative technology, exemple 'E9 29 37'=> IT29=1 et IT37=1:
          """)
 image_path = "images/innov_tech.png"
 image = Image.open(image_path)
