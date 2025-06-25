@@ -12,9 +12,9 @@ st.set_page_config(
 st.markdown("# CO2 MLflow")
 st.sidebar.header("Affiner les choix d'hyperparamètres")
 
-st.write("""Choisir et affiner un modèle est un défi pour tout data scientist. 
-         MLflow nous aide à comparer les performances selon différents hyperparamètres, en identifiant ceux qui améliorent les scores.
-         Une méthode efficace consiste à lancer un random search large, analyser les résultats dans MLflow, puis affiner via un grid search ciblé.
+st.write("""Choisir et affiner un modèle est un défi pour tout data scientist. \n
+         MLflow nous aide à comparer les performances selon différents hyperparamètres, en identifiant ceux qui améliorent les scores. \n
+         Une méthode efficace consiste à lancer un random search large, analyser les résultats dans MLflow, puis affiner via un grid search ciblé. \n
 Voici ce qui a pu être fait sur k-NN par exemple:
          """)
 image_path = "images/mlflow_knn_01.jpeg"
