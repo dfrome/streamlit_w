@@ -79,11 +79,18 @@ feature_name_mapping = {
 
 
 # Valeurs initiales pour chaque colonne
-default_values = {
-    "m (kg)": 1350, "W (mm)": 2690, "At1 (mm)": 1510, "ec (cm3)": 1500, "ep (KW)": 77,
-    "z (Wh/km)": 22, "Electric range (km)": 50,
+#default_values = {
+#    "m (kg)": 1350, "W (mm)": 2690, "At1 (mm)": 1510, "ec (cm3)": 1500, "ep (KW)": 77,
+#    "z (Wh/km)": 22, "Electric range (km)": 50,
+#    "IT28": 0, "IT29": 0, "IT32": 0, "IT33": 0, "IT35": 0, "IT37": 0, "IT38": 0, "IT39": 0,
+#    "Ft_diesel/electric": 1, "Ft_petrol": 0, "Ft_petrol/electric": 0,
+#    "Cr_M1G": 0, "Cr_M1S": 1, "Cr_N1G": 0, "Fm_H": 0, "Fm_M": 1, "Fm_P": 0
+#}
+default_values = { # Captur TCE 90 2023
+    "m (kg)": 1350, "W (mm)": 2600, "At1 (mm)": 1600, "ec (cm3)": 900, "ep (KW)": 66,
+    "z (Wh/km)": 0, "Electric range (km)": 0,
     "IT28": 0, "IT29": 0, "IT32": 0, "IT33": 0, "IT35": 0, "IT37": 0, "IT38": 0, "IT39": 0,
-    "Ft_diesel/electric": 1, "Ft_petrol": 0, "Ft_petrol/electric": 0,
+    "Ft_diesel/electric": 0, "Ft_petrol": 1, "Ft_petrol/electric": 0,
     "Cr_M1G": 0, "Cr_M1S": 1, "Cr_N1G": 0, "Fm_H": 0, "Fm_M": 1, "Fm_P": 0
 }
 
