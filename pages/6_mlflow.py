@@ -31,16 +31,8 @@ st.image(image)
 st.write("""
 ici, l’hyperparamètre correspondant au type de calcul de distance est décidément à favoriser
 """)
+
 st.write("""
-(images pour ref)
-         """)
-st.write("""
-
-
-Graph mlflow. En abscisse : Minkowski / Manhattan / Ericsson / Chebyshev. En ordonnée les MSE des runs.
-
-
-Graph mlflow. En abscisse : distance / uniform. En ordonnée les MSE des runs.
 
 Exemple avec hyperparamètres numériques:
          """)
