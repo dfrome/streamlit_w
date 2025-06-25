@@ -12,11 +12,9 @@ st.set_page_config(
 st.markdown("# CO2 MLflow")
 st.sidebar.header("Affiner les choix d'hyperparamètres")
 
-st.write("""L’un des grands enjeux pour le data scientist est de trouver le bon modèle, mais aussi d’en tirer le meilleur. D’ailleurs il faut s’approcher du meilleur de chaque modèle pour sélectionner le bon. 
-Et parfois cela peut être obscur tant il y a d’ajustements possibles.
-Pour nous aider, l’outil mlflow peut s’avérer précieux pour consigner les résultats de campagnes d’apprentissage avec des hyperparamètres différents.
-Ceci permet de cibler les plages d’hyperparamètres favorisant les bons scores, et surtout d’éliminer des plages ou des types qui plombent les scores.
-Ainsi, une bonne stratégie est de réaliser quelques random search avec une plage large de paramètres, et décortiquer les résultats sur mlflow pour procéder à un gridsearch ensuite.
+st.write("""Choisir et affiner un modèle est un défi pour tout data scientist. 
+         MLflow nous aide à comparer les performances selon différents hyperparamètres, en identifiant ceux qui améliorent les scores.
+         Une méthode efficace consiste à lancer un random search large, analyser les résultats dans MLflow, puis affiner via un grid search ciblé.
 Voici ce qui a pu être fait sur k-NN par exemple:
          """)
 image_path = "images/mlflow_knn_01.jpeg"
