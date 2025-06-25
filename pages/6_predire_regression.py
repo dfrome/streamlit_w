@@ -164,15 +164,15 @@ if selected_fuel_modes > 1:
 # afficher l'étiquette énergatique correspondante
 co2_levels = {
     "A": (0, 100, "label_a.jpg", "Émission de 0 à 100 g/km"),
-    "B": (101, 120, "label_b.jpg", "Émission de 101 à 120 g/km"),
-    "C": (121, 140, "label_c.jpg", "Émission de 121 à 140 g/km"),
-    "D": (141, 160, "label_d.jpg", "Émission de 141 à 160 g/km"),
-    "E": (161, 200, "label_e.jpg", "Émission de 161 à 200 g/km"),
-    "F": (201, 250, "label_f.jpg", "Émission de 201 à 250 g/km"),
+    "B": (100, 120, "label_b.jpg", "Émission de 101 à 120 g/km"),
+    "C": (120, 140, "label_c.jpg", "Émission de 121 à 140 g/km"),
+    "D": (140, 160, "label_d.jpg", "Émission de 141 à 160 g/km"),
+    "E": (160, 200, "label_e.jpg", "Émission de 161 à 200 g/km"),
+    "F": (200, 250, "label_f.jpg", "Émission de 201 à 250 g/km"),
     "G": (250, float('inf'), "label_g.jpg", "Émission supérieure à 250 g/km")
 }
 for level, (min_val, max_val, image_file, caption) in co2_levels.items():
-    if min_val <= prediction <= max_val:
+    if min_val < prediction <= max_val:
         st.image(base_images + image_file, caption=caption)
         break
 
