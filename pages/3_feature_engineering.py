@@ -29,7 +29,7 @@ st.image(image, caption="\n")
 
 image_path = "images/cylindrees.png"
 image = Image.open(image_path)
-st.image(image, caption="Outliers précieux du point de vue métier.", use_column_width=True)
+st.image(image, caption="Outliers précieux du point de vue métier.", use_container_width=True)
 
 image_path = "images/CorrectionsEmpattement.jpg"
 image = Image.open(image_path)
