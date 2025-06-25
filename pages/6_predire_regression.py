@@ -93,6 +93,13 @@ default_values = { # Captur TCE 90 2023
     "Ft_diesel/electric": 0, "Ft_petrol": 1, "Ft_petrol/electric": 0,
     "Cr_M1G": 0, "Cr_M1S": 1, "Cr_N1G": 0, "Fm_H": 0, "Fm_M": 1, "Fm_P": 0
 }
+default_values = { # Captur TCE 90 2023
+    "m (kg)": 1234, "W (mm)": 2640, "At1 (mm)": 1531, "ec (cm3)": 898, "ep (KW)": 66,
+    "z (Wh/km)": 0, "Electric range (km)": 0,
+    "IT28": 0, "IT29": 0, "IT32": 0, "IT33": 0, "IT35": 0, "IT37": 0, "IT38": 0, "IT39": 0,
+    "Ft_diesel/electric": 0, "Ft_petrol": 1, "Ft_petrol/electric": 0,
+    "Cr_M1G": 0, "Cr_M1S": 1, "Cr_N1G": 0, "Fm_H": 0, "Fm_M": 1, "Fm_P": 0
+}
 
 # Combine all columns in the correct order
 all_columns = robust_cols + min_max_cols + binary_cols
