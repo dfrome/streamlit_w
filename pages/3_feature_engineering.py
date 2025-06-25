@@ -21,11 +21,10 @@ st.write("""Dans les données originales, il y a beaucoup d'erreurs manifestes d
 
 st.write("""Quelques particularités à noter:
         Pour les voies avant et arrière (At1 et At2) : le pairplot montre une relation très linéaire entre elles.  
-        Mais nous avons aussi voulu le confirmer statistiquement avec des tests de corrélation statistiques.
 """)
 image_path = "images/at1at2.jpg"
 image = Image.open(image_path)
-st.image(image, caption="\n")
+st.image(image, caption="...mais nous avons aussi voulu le confirmer avec des tests de corrélation statistiques.")
 
 image_path = "images/cylindrees.png"
 image = Image.open(image_path)
