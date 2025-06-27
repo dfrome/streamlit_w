@@ -39,6 +39,14 @@ st.sidebar.header("Nous entraînons des modèles de régression à partir des do
 st.write("Nous voulons estimer l'émission de CO2 en fonction des caractéristiques des véhicules\n  "
 "En science des données, on parle alors d'un sujet de regression: estimer une valeur numérique continue.")
 
+image_path = "images/Resultats_modeles_regression.png"
+image = Image.open(image_path)
+st.image(image)
+
+image_path = "images/Regression_importance_variables_Random_Forest.png"
+image = Image.open(image_path)
+st.image(image)
+
             
 def load_our_data():
     
