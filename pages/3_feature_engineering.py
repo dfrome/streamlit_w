@@ -16,7 +16,14 @@ st.sidebar.header("Nous corrigeons les données")
 st.write("""Dans les données originales, il y a beaucoup d'erreurs manifestes de saisie.   
     Nous supprimons les données inutilisables (exemple hybrides sans autonomie),  
     Nous traitons les colonnes ayant des valeurs manquantes.  
-    Nous corrigeons ou supprimpons les aberrations.  
+""")
+
+image_path = "images/cylindrees.png"
+image = Image.open(image_path)
+st.image(image, caption="Outliers précieux du point de vue métier.", use_container_width=True)
+
+st.write(""" 
+    Nous corrigeons ou supprimpons ainsi les outliers, en prenant soin de respecter les considérations métier et valeurs trouvables sur catalogues constructeurs"
 """)
 
 st.write("""Quelques particularités à noter:
@@ -26,9 +33,7 @@ image_path = "images/at1at2.jpg"
 image = Image.open(image_path)
 st.image(image, caption="...mais nous avons aussi voulu le confirmer avec des tests de corrélation statistiques.")
 
-image_path = "images/cylindrees.png"
-image = Image.open(image_path)
-st.image(image, caption="Outliers précieux du point de vue métier.", use_container_width=True)
+
 
 image_path = "images/CorrectionsEmpattement.jpg"
 image = Image.open(image_path)
