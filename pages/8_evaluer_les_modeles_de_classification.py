@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, classification_report
+from PIL import Image
 
 # charge les chemins vers les fichiers de données : base_processed, base_raw, base_models...
 from init_notebook import base_processed, base_raw, base_models
