@@ -16,6 +16,8 @@ st.sidebar.header("Nous corrigeons les données")
 st.write("""Dans les données originales, il y a beaucoup d'erreurs manifestes de saisie.   
     Nous supprimons les données inutilisables (exemple hybrides sans autonomie),  
     Nous traitons les colonnes ayant des valeurs manquantes.  
+         
+    Puis nous regardons les outliers:
 """)
 
 image_path = "images/cylindrees.png"
