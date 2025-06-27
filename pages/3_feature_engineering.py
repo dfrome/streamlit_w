@@ -25,7 +25,7 @@ image = Image.open(image_path)
 st.image(image, caption="Outliers précieux du point de vue métier.", use_container_width=True)
 
 st.write(""" 
-    Nous corrigeons ou supprimpons ainsi les outliers, en prenant soin de respecter les considérations métier et valeurs trouvables sur catalogues constructeurs"
+    Nous corrigeons ou supprimons ainsi les outliers, en prenant soin de respecter les considérations métier et valeurs trouvables sur catalogues constructeurs"
 """)
 
 st.write("""Quelques particularités à noter:
