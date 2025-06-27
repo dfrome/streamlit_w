@@ -28,6 +28,11 @@ st.write("Nous voulons classifier les véhicules en fonction de leurs caractéri
          "En science des données, on parle d'un sujet de classification: prédire une classe ou une catégorie.")
 
 
+image_path = "images/Classification_all.png"
+image = Image.open(image_path)
+st.image(image)
+
+
 # Fonction pour entraîner un modèle
 def train_model_classification(model, X_train, y_train):
     model.fit(X_train, y_train)
