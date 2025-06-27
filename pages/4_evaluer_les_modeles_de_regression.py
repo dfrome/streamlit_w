@@ -43,9 +43,9 @@ image_path = "images/Resultats_modeles_regression.png"
 image = Image.open(image_path)
 st.image(image)
 
-image_path = "images/Regression_importance_variables_Random_Forest.png"
-image = Image.open(image_path)
-st.image(image)
+#image_path = "images/Regression_importance_variables_Random_Forest.png"
+#image = Image.open(image_path)
+#st.image(image)
 
             
 def load_our_data():
