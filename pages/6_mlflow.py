@@ -23,12 +23,12 @@ st.image(image)
 st.write("""
 ici, l’hyperparamètre à droite est la méthode chebyshev, que nous pouvons donc éliminer pour la suite
          """)
-image_path = "images/mlflow_knn_02.jpeg"
-image = Image.open(image_path)
-st.image(image)
-st.write("""
-ici, l’hyperparamètre correspondant au type de calcul de distance est décidément à favoriser
-""")
+#image_path = "images/mlflow_knn_02.jpeg"
+#image = Image.open(image_path)
+#st.image(image)
+#st.write("""
+#ici, l’hyperparamètre correspondant au type de calcul de distance est décidément à favoriser
+#""")
 
 st.write("""
 
