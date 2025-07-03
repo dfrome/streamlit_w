@@ -46,14 +46,14 @@ On ajoute des features en explosant les codes d'innovative technology, exemple '
          """)
 image_path = "images/innov_tech.png"
 image = Image.open(image_path)
-st.image(image, caption="distribution selon types d'innovations embarquées.")
+st.image(image, caption="Distribution selon types d'innovations embarquées.")
 
 st.write("""
 Au final après tous ces traitements, on harmonise l'échelle des valeurs numériques""")
 
 image_path = "images/scaled.png"
 image = Image.open(image_path)
-st.image(image, caption="disctributionDistribution des variables explicatives numériques après scaling.")
+st.image(image, caption="Distribution des variables explicatives numériques après scaling.")
 
 
 #progress_bar = st.sidebar.progress(0)
