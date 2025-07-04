@@ -30,8 +30,10 @@ ici, l’hyperparamètre à droite est la méthode Chebyshev, que nous pouvons d
 #ici, l’hyperparamètre correspondant au type de calcul de distance est décidément à favoriser
 #""")
 
+st.divider()  # Séparation visuelle
+
 st.write("""
-\n \n
+
 Exemple avec hyperparamètres numériques:
          """)
 image_path = "images/mlflow_03.png"
