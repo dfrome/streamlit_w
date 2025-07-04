@@ -21,7 +21,7 @@ image_path = "images/mlflow_knn_01.jpeg"
 image = Image.open(image_path)
 st.image(image)
 st.write("""
-ici, l’hyperparamètre à droite est la méthode chebyshev, que nous pouvons donc éliminer pour la suite
+ici, l’hyperparamètre à droite est la méthode Chebyshev, que nous pouvons donc éliminer pour la suite
          """)
 #image_path = "images/mlflow_knn_02.jpeg"
 #image = Image.open(image_path)
@@ -31,7 +31,7 @@ ici, l’hyperparamètre à droite est la méthode chebyshev, que nous pouvons d
 #""")
 
 st.write("""
-
+\n \n
 Exemple avec hyperparamètres numériques:
          """)
 image_path = "images/mlflow_03.png"
