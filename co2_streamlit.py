@@ -13,7 +13,7 @@ st.sidebar.success(":point_up_2: Sélectionnez un thème.") # icode doigt vers l
 
 st.markdown(
     """
-    Cette page présente les relations entre caractéristiques de véhicules et leur émission de CO2
+    Cette page présente les relations entre caractéristiques de véhicules et leur émission de CO2  
     Projet d'apprenants de l'organisme Datascientest\n
     **👈 Faites votre choix depuis le volet d'exploration** pour développer un thème.
       
