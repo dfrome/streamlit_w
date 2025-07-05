@@ -7,11 +7,11 @@ from PIL import Image
 
 #st.set_page_config(page_title="Plotting Demo", page_icon=":checkered_flag:")
 st.set_page_config(
-    page_title="Projet Datascientest - émission de CO2 des véhicules.",
+    page_title="Prédiction d'émission de CO2 des véhicules.",
     page_icon=":checkered_flag:",
 )
 
-st.markdown("# DataScientest - emission CO2 - Digest")
+st.markdown("# Prédiction d'émission de CO2 des véhicules")
 st.sidebar.header("Fin de notre projet")
 #st.write(
 #    """Nous explorons tout d'abord les données."""
