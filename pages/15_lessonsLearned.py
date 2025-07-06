@@ -34,7 +34,7 @@ st.markdown("""
 #st.image("images/data_cleaning.jpg", caption="Traitement des données", use_container_width =True)
 
 # Section: Visualisations clés
-st.markdown("### 📈 Feature engineering : une clé pour la qualité des entraînements")
+st.markdown("### 🔧 Feature engineering : une clé pour la qualité des entraînements")
 st.markdown("""
 - Traitement des corrélations fortes : élimination nécessaire de la consommation (cause vs effet), réduction de dimension pour les voies.
 - Traitement rigoureux et respectueux du métier pour les erreurs, valeurs manquantes, outliers, et doublons
@@ -43,7 +43,7 @@ st.markdown("""
 #st.image("images/visualisation.jpg", caption="Exemples de visualisation", use_container_width =True)
 
 # Section: Modèles de régression
-st.markdown("### Modèles de régression puis de classification")
+st.markdown("### 📈 Modèles de régression puis de classification")
 st.markdown("""
 - Le choix des hyperparamètres est crucial pour la performance des modèles
 - Les données sont adaptées aux type GBM et Random Forest. Attention à la généralisation
@@ -51,18 +51,43 @@ st.markdown("""
 """)
 #st.image("images/results_regression01.png", caption="Comparaison des modèles de régression", use_container_width =True)
 #st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width =True)
+#col1, col2 = st.columns(2)
+
+#with col1:
+#    st.image("images/results_regression_small.png", caption="Modèles de régression", use_container_width=True)
+
+#with col2:
+#    st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width=True)
+
+#common height (f.ex. 400px)
+image_style = """
+<style>
+.img-container img {
+    height: 400px;
+    object-fit: cover;
+}
+</style>
+"""
+
+st.markdown(image_style, unsafe_allow_html=True)
+
 col1, col2 = st.columns(2)
 
 with col1:
+    st.markdown('<div class="img-container">', unsafe_allow_html=True)
     st.image("images/results_regression_small.png", caption="Modèles de régression", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
+    st.markdown('<div class="img-container">', unsafe_allow_html=True)
     st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+
 
 # Section: Interprétabilité & Insights
 st.markdown("### 🧠 Interprétabilité & Recommandations métier")
 st.markdown("""
-- Importance des variables : autonomie électrique, masse, cylindrée
 - Recommandations techniques :
   - Essence/Diesel : contenir la masse et la cylindrée pour réduire les émissions
   - Hybride : augmenter l'autonomie pour réduire les émissions
