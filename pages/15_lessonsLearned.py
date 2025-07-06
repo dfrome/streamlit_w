@@ -28,7 +28,7 @@ st.set_page_config(page_title="Leçons apprises avec projet CO₂", layout="wide
 # Section: Données & Préparation
 st.markdown("### 🔍 Données & Exploration: bien comprendre nos données")
 st.markdown("""
-- Choix de la base : Bien examiner la richesse des données pour mieux entraîner les modèles
+- Choix de la base : bien examiner la richesse des données pour mieux entraîner les modèles
 - Visualiser les corrélations, les distributions propres au métier pour ne pas faire d'erreur
             """)
 
@@ -68,4 +68,4 @@ st.image("images/classif_shap.png", caption="Interprétabilité SHAP", use_conta
 
 # Footer
 st.markdown("---")
-st.markdown("📘 Fait par Polina Quignon, Vincent Guillemot, Denis Froment — avec la supervision d'Eliott Douieb.")
+st.markdown("🎬 Fait par Polina Quignon, Vincent Guillemot, Denis Froment — avec la supervision d'Eliott Douieb.")
