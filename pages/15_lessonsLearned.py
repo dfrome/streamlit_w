@@ -22,7 +22,7 @@ images = [
     {"path": "images/co2_digest.png", "caption": ""},
 ]
 
-st.set_page_config(page_title="Résumé du Projet CO₂", layout="wide")
+st.set_page_config(page_title="Leçons apprises avec projet CO₂", layout="wide")
 
 
 # Section: Données & Préparation
@@ -31,7 +31,7 @@ st.markdown("""
 - Choix de la base : Nous avons favorisé la richesse plutôt que la jeunesse des données
 - Visualisation des corrélations, des distributions marquées par le métier
             """)
-st.image("images/data_cleaning.jpg", caption="Traitement des données", use_column_width=True)
+#st.image("images/data_cleaning.jpg", caption="Traitement des données", use_column_width=True)
 
 # Section: Visualisations clés
 st.markdown("### 📈 Feature engineering : une clé pour la qualité des entraînements")
@@ -40,7 +40,7 @@ st.markdown("""
 - Traitement rigoureux et respectueux du métier pour les erreurs, valeurs manquantes, outliers, et doublons
 - Création de nouvelles variables (e.g., innovations, types d’énergie)
 """)
-st.image("images/visualisation.jpg", caption="Exemples de visualisation", use_column_width=True)
+#st.image("images/visualisation.jpg", caption="Exemples de visualisation", use_column_width=True)
 
 # Section: Modèles de régression
 st.markdown("### Modèles de régression testés")
