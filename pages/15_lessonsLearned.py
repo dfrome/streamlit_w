@@ -54,10 +54,10 @@ st.markdown("""
 col1, col2 = st.columns(2)
 
 with col1:
-    st.image("images/results_regression_small.png", caption="Modèles de régression", use_container_width=True)
+    st.image("images/results_regression_small.png", caption="Modèles de régression", use_container_width=False)
 
 with col2:
-    st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width=True)
+    st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width=False)
 
 
 # Section: Interprétabilité & Insights
