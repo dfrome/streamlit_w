@@ -31,7 +31,7 @@ st.markdown("""
 - Choix de la base : Nous avons favorisé la richesse plutôt que la jeunesse des données
 - Visualisation des corrélations, des distributions marquées par le métier
             """)
-#st.image("images/data_cleaning.jpg", caption="Traitement des données", use_column_width=True)
+#st.image("images/data_cleaning.jpg", caption="Traitement des données", use_container_width =True)
 
 # Section: Visualisations clés
 st.markdown("### 📈 Feature engineering : une clé pour la qualité des entraînements")
@@ -40,35 +40,35 @@ st.markdown("""
 - Traitement rigoureux et respectueux du métier pour les erreurs, valeurs manquantes, outliers, et doublons
 - Création de nouvelles variables (e.g., innovations, types d’énergie)
 """)
-#st.image("images/visualisation.jpg", caption="Exemples de visualisation", use_column_width=True)
+#st.image("images/visualisation.jpg", caption="Exemples de visualisation", use_container_width =True)
 
 # Section: Modèles de régression
-st.markdown("### Modèles de régression testés")
+st.markdown("### Modèles de régression puis de classification")
 st.markdown("""
-- Régression linéaire : insuffisante (hétéroscédasticité, non-normalité)
-- SVR : bonne adaptation, mais temps de calcul élevé
-- Random Forest : **Meilleur modèle**, R² = 0.985, MSE ≈ 49
+- Le choix des hyperparamètres est crucial pour la performance des modèles
+- Les données sont adaptées aux type GBM et Random Forest. Attention à la généralisation
+- Besoin de SHAP pour expliquer les influences des variables explicatives
 """)
-st.image("images/results_regression01.png", caption="Comparaison des modèles de régression", use_column_width=True)
+#st.image("images/results_regression01.png", caption="Comparaison des modèles de régression", use_container_width =True)
+#st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width =True)
+col1, col2 = st.columns(2)
 
-# Section: Modèles de classification
-st.markdown("### 🏷️ Modèles de classification")
-st.markdown("""
-- LightGBM & XGBoost : **Performances excellentes**, F1-score ≈ 0.90
-- SHAP utilisé pour expliquer les décisions des modèles, feature importance
-""")
-st.image("images/classif_results_small.png", caption="Modèles de classification", use_column_width=True)
+with col1:
+    st.image("images/results_regression_small.png", caption="Modèles de régression", use_container_width=True)
+
+with col2:
+    st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width=True)
 
 # Section: Interprétabilité & Insights
 st.markdown("### 🧠 Interprétabilité & Recommandations métier")
 st.markdown("""
 - Importance des variables : autonomie électrique, masse, cylindrée
 - Recommandations techniques :
-  - Essence/Diesel : réduire masse et puissance
-  - Hybride : augmenter autonomie
-  - Interaction des divers paramètres: utiliser notre simulateur
+  - Essence/Diesel : contenir la masse et la cylindrée pour réduire les émissions
+  - Hybride : augmenter l'autonomie pour réduire les émissions
+  - Interaction des divers paramètres: utiliser notre simulateur !
 """)
-st.image("images/classif_shap.png", caption="Interprétabilité SHAP", use_column_width=True)
+st.image("images/classif_shap.png", caption="Interprétabilité SHAP", use_container_width =True)
 
 # Footer
 st.markdown("---")
