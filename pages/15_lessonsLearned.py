@@ -28,8 +28,8 @@ st.set_page_config(page_title="Leçons apprises avec projet CO₂", layout="wide
 # Section: Données & Préparation
 st.markdown("### 🔍 Données & Exploration: bien comprendre nos données")
 st.markdown("""
-- Choix de la base : Nous avons favorisé la richesse plutôt que la jeunesse des données
-- Visualisation des corrélations, des distributions marquées par le métier
+- Choix de la base : Bien examiner la richesse des données pour mieux entraîner les modèles
+- Visualisation des corrélations, des distributions propres au métier
             """)
 #st.image("images/data_cleaning.jpg", caption="Traitement des données", use_container_width =True)
 
@@ -51,42 +51,17 @@ st.markdown("""
 """)
 #st.image("images/results_regression01.png", caption="Comparaison des modèles de régression", use_container_width =True)
 #st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width =True)
-#col1, col2 = st.columns(2)
-
-#with col1:
-#    st.image("images/results_regression_small.png", caption="Modèles de régression", use_container_width=True)
-
-#with col2:
-#    st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width=True)
-
-#common height (f.ex. 400px)
-image_style = """
-<style>
-.img-container img {
-    height: 400px;
-    object-fit: cover;
-}
-</style>
-"""
-
-st.markdown(image_style, unsafe_allow_html=True)
-
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown('<div class="img-container">', unsafe_allow_html=True)
     st.image("images/results_regression_small.png", caption="Modèles de régression", use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
-    st.markdown('<div class="img-container">', unsafe_allow_html=True)
     st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
 
 
 # Section: Interprétabilité & Insights
-st.markdown("### 🧠 Interprétabilité & Recommandations métier")
+st.markdown("### 💡Interprétabilité & Recommandations métier")
 st.markdown("""
 - Recommandations techniques :
   - Essence/Diesel : contenir la masse et la cylindrée pour réduire les émissions
@@ -97,4 +72,4 @@ st.image("images/classif_shap.png", caption="Interprétabilité SHAP", use_conta
 
 # Footer
 st.markdown("---")
-st.markdown("📘 Fait par Polina Quignon, Vincent Guillemot, Denis Froment — avec la supervicion d'Eliott Douieb.")
+st.markdown("📘 Fait par Polina Quignon, Vincent Guillemot, Denis Froment — avec la supervision d'Eliott Douieb.")
