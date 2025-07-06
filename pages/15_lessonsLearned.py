@@ -24,55 +24,40 @@ images = [
 
 st.set_page_config(page_title="Résumé du Projet CO₂", layout="wide")
 
-# Header
-st.title("📊 Prédiction des Émissions de CO₂ selon les Caractéristiques des Véhicules")
-st.subheader("Projet DataScientest — Septembre 2024 à Juin 2025")
-
-# Section: Intro
-st.markdown("### 🎯 Objectif du projet")
-st.markdown("""
-Prédire les émissions de CO₂ des véhicules à partir de leurs caractéristiques techniques pour aider les constructeurs à :
-- Estimer l’impact environnemental d’un nouveau modèle
-- Optimiser les paramètres de conception pour minimiser les émissions
-""")
-st.image("images/objectif.jpg", caption="Objectif du projet (à insérer)", use_column_width=True)
 
 # Section: Données & Préparation
-st.markdown("### 🔍 Données & Préparation")
+st.markdown("### 🔍 Données & Exploration: bien comprendre nos données")
 st.markdown("""
-- Base EEA de 2022 retenue (plus complète que 2023)
-- Traitement rigoureux des valeurs manquantes, outliers, et doublons
-- Création de nouvelles variables (e.g., innovations, types d’énergie)
-- Scaling avec RobustScaler et MinMaxScaler
-""")
+- Choix de la base : Nous avons favorisé la richesse plutôt que la jeunesse des données
+- Visualisation des corrélations, des distributions marquées par le métier
+            """)
 st.image("images/data_cleaning.jpg", caption="Traitement des données", use_column_width=True)
 
 # Section: Visualisations clés
-st.markdown("### 📈 Visualisations clés")
+st.markdown("### 📈 Feature engineering : une clé pour la qualité des entraînements")
 st.markdown("""
-- Répartition par carburant : essence majoritaire, mais très polluant
-- Corrélations fortes : consommation carburant, cylindrée, puissance
-- Insights métier : hybrides à forte autonomie → faibles émissions
+- Traitement des corrélations fortes : élimination nécessaire de la consommation (cause vs effet), réduction de dimension pour les voies.
+- Traitement rigoureux et respectueux du métier pour les erreurs, valeurs manquantes, outliers, et doublons
+- Création de nouvelles variables (e.g., innovations, types d’énergie)
 """)
 st.image("images/visualisation.jpg", caption="Exemples de visualisation", use_column_width=True)
 
 # Section: Modèles de régression
-st.markdown("### 🤖 Modèles de régression testés")
+st.markdown("### Modèles de régression testés")
 st.markdown("""
 - Régression linéaire : insuffisante (hétéroscédasticité, non-normalité)
 - SVR : bonne adaptation, mais temps de calcul élevé
 - Random Forest : **Meilleur modèle**, R² = 0.985, MSE ≈ 49
 """)
-st.image("images/regression_models.jpg", caption="Comparaison des modèles de régression", use_column_width=True)
+st.image("images/results_regression01.png", caption="Comparaison des modèles de régression", use_column_width=True)
 
 # Section: Modèles de classification
 st.markdown("### 🏷️ Modèles de classification")
 st.markdown("""
-- Objectif : prédire l’étiquette énergétique des véhicules
 - LightGBM & XGBoost : **Performances excellentes**, F1-score ≈ 0.90
-- SHAP utilisé pour expliquer les décisions des modèles
+- SHAP utilisé pour expliquer les décisions des modèles, feature importance
 """)
-st.image("images/classification_models.jpg", caption="Modèles de classification", use_column_width=True)
+st.image("images/classif_results_small.png", caption="Modèles de classification", use_column_width=True)
 
 # Section: Interprétabilité & Insights
 st.markdown("### 🧠 Interprétabilité & Recommandations métier")
@@ -81,19 +66,10 @@ st.markdown("""
 - Recommandations techniques :
   - Essence/Diesel : réduire masse et puissance
   - Hybride : augmenter autonomie
-  - Axes plus étroits → moindre émission
+  - Interaction des divers paramètres: utiliser notre simulateur
 """)
-st.image("images/shap_importance.jpg", caption="Interprétabilité SHAP", use_column_width=True)
-
-# Section: Impacts & Reutilisation
-st.markdown("### 🔄 Impacts industriels et réutilisation du modèle")
-st.markdown("""
-- Modèle utilisable via service web par les constructeurs
-- Réentraînement annuel recommandé pour intégrer les innovations
-- Application aux prévisions d'étiquetage énergétique et émission
-""")
-st.image("images/industry_use.jpg", caption="Impact industriel", use_column_width=True)
+st.image("images/classif_shap.png", caption="Interprétabilité SHAP", use_column_width=True)
 
 # Footer
 st.markdown("---")
-st.markdown("📘 Fait par Polina Quignon, Vincent Guillemot, Denis Froment — avec l'accompagnement de Eliott Douieb.")
+st.markdown("📘 Fait par Polina Quignon, Vincent Guillemot, Denis Froment — avec la supervicion d'Eliott Douieb.")
