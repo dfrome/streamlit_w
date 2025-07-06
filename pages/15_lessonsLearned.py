@@ -29,20 +29,16 @@ st.set_page_config(page_title="Leçons apprises avec projet CO₂", layout="wide
 st.markdown("### 🔍 Données & Exploration: bien comprendre nos données")
 st.markdown("""
 - Choix de la base : Bien examiner la richesse des données pour mieux entraîner les modèles
-- Visualisation des corrélations, des distributions propres au métier
+- Visualiser les corrélations, les distributions propres au métier pour ne pas faire d'erreur
             """)
-#st.image("images/data_cleaning.jpg", caption="Traitement des données", use_container_width =True)
 
 # Section: Visualisations clés
 st.markdown("### 🔧 Feature engineering : une clé pour la qualité des entraînements")
 st.markdown("""
-- Traitement des corrélations fortes : élimination nécessaire de la consommation (cause vs effet), réduction de dimension pour les voies.
-- Traitement rigoureux et respectueux du métier pour les erreurs, valeurs manquantes, outliers, et doublons
-- Création de nouvelles variables (e.g., innovations, types d’énergie)
+- Traiter rigoureusement et en fonction du métier: erreurs, outliers, valeurs manquantes et doublons, corrélations fortes
 """)
-#st.image("images/visualisation.jpg", caption="Exemples de visualisation", use_container_width =True)
 
-# Section: Modèles de régression
+# Section: Modèles 
 st.markdown("### 📈 Modèles de régression puis de classification")
 st.markdown("""
 - Le choix des hyperparamètres est crucial pour la performance des modèles
