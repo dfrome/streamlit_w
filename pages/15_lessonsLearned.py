@@ -57,7 +57,7 @@ with col2:
 
 
 # Section: Interprétabilité & Insights
-st.markdown("### 💡Interprétabilité & Recommandations métier")
+st.markdown("### Recommandations métier")
 st.markdown("""
 - Recommandations techniques :
   - Essence/Diesel : contenir la masse et la cylindrée pour réduire les émissions
