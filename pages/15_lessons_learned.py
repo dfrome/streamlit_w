@@ -5,17 +5,13 @@ import time
 import numpy as np
 from PIL import Image
 
-#st.set_page_config(page_title="Plotting Demo", page_icon=":checkered_flag:")
 st.set_page_config(
     page_title="Prédiction d'émission de CO2 des véhicules.",
     page_icon=":checkered_flag:",
 )
 
-st.markdown("# Prédiction d'émission de CO2 des véhicules")
-st.sidebar.header("Fin de notre projet")
-#st.write(
-#    """Nous explorons tout d'abord les données."""
-#)
+#st.markdown("# Prédiction d'émission de CO2 des véhicules")
+st.sidebar.header("Conclusion de notre projet")
 
 
 images = [
@@ -28,7 +24,7 @@ st.set_page_config(page_title="Leçons apprises avec projet CO₂", layout="wide
 # Section: Données & Préparation
 st.markdown("### 🔍 Données & Exploration: bien comprendre nos données")
 st.markdown("""
-- Choix de la base : bien examiner la richesse des données pour mieux entraîner les modèles
+- Choix de la base : Privilégier la richesse des données pour mieux entraîner les modèles
 - Visualiser les corrélations, les distributions propres au métier pour ne pas faire d'erreur
             """)
 
