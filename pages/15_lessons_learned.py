@@ -38,7 +38,7 @@ st.markdown("""
 st.markdown("### 📈 Modèles de régression puis de classification")
 st.markdown("""
 - Le choix des hyperparamètres est crucial pour la performance des modèles
-- Les données sont adaptées aux type GBM et Random Forest. Attention à la généralisation
+- Les données sont adaptées aux modèles non paramétriques. Attention à la généralisation
 """)
 #st.image("images/results_regression01.png", caption="Comparaison des modèles de régression", use_container_width =True)
 #st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width =True)
