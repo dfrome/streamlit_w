@@ -5,10 +5,6 @@ import time
 import numpy as np
 from PIL import Image
 
-st.set_page_config(
-    page_title="Prédiction d'émission de CO2 des véhicules.",
-    page_icon=":checkered_flag:",
-)
 
 #st.markdown("# Prédiction d'émission de CO2 des véhicules")
 st.sidebar.header("Conclusion de notre projet")
@@ -18,7 +14,7 @@ images = [
     {"path": "images/co2_digest.png", "caption": ""},
 ]
 
-st.set_page_config(page_title="Leçons apprises avec projet CO₂", layout="wide")
+st.set_page_config(page_title="Leçons apprises avec projet CO₂", layout="wide", page_icon=":checkered_flag:")
 
 
 # Section: Données & Préparation
