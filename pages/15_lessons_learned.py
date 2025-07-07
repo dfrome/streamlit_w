@@ -39,7 +39,6 @@ st.markdown("### 📈 Modèles de régression puis de classification")
 st.markdown("""
 - Le choix des hyperparamètres est crucial pour la performance des modèles
 - Les données sont adaptées aux type GBM et Random Forest. Attention à la généralisation
-- Besoin de SHAP pour expliquer les influences des variables explicatives
 """)
 #st.image("images/results_regression01.png", caption="Comparaison des modèles de régression", use_container_width =True)
 #st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width =True)
@@ -51,16 +50,17 @@ with col1:
 with col2:
     st.image("images/classif_results_small.png", caption="Modèles de classification", use_container_width=False)
 
+st.markdown("---")
 
 # Section: Interprétabilité & Insights
-st.markdown("### Recommandations métier")
+st.markdown("### Recommandations métier et interprétabilité")
 st.markdown("""
 - Recommandations techniques :
   - Essence/Diesel : contenir la masse et la cylindrée pour réduire les émissions
   - Hybride : augmenter l'autonomie pour réduire les émissions
   - Interaction des divers paramètres: utiliser notre simulateur !
 """)
-st.image("images/classif_shap.png", caption="Interprétabilité SHAP", use_container_width =True)
+st.image("images/classif_shap.png", caption="Interprétabilité : Besoin de SHAP pour expliquer les influences des variables explicatives", use_container_width =True)
 
 # Footer
 st.markdown("---")
