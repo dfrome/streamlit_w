@@ -1,4 +1,4 @@
 # streamlit_win
  CO2 streamlit  
- Développé par Denis Froment pour projet DataScientest  
+ Développed by Denis Froment for the CO2 prediction project, as part of the Data Scientist studies at DataScientest.  
  Référence: win/C_20250301
